@@ -1,51 +1,53 @@
-# Blazz 電信客服 AI Agent 教學專案
+# Blazz Telecom Customer Service AI Agent Workshop
 
-一個五堂制的實作教學專案：跳過生成式 AI 與代理式 AI 的基礎理論，直接動手打造一個貼近真實電信業客服情境的 Multi-agent AI 客服系統（虛構電信公司 **Blazz**），讓學員獲得完整落地一個真實產品的成就感。
+A five-unit, hands-on workshop: skip the theory behind generative AI and agentic AI, and go straight to building a multi-agent AI customer-service system for a realistic telecom scenario (fictional carrier **Blazz**) — so the student walks away with the satisfaction of having shipped something real.
 
-## 專案目標與定調
+## Goals & Framing
 
-- 目標對象：已經有基礎 AI 課程背景、想跳過理論直接動手做出真實產品的學員
-- 教學定調：跳過 Gen AI 與 Agentic AI 的基礎理論講解，直接動手實作
-- 成品：貼近真實商業需求的「電信公司 AI 客服代理人（Multi-agent）」
-- 核心價值：讓學員獲得打造真實上線產品的極大成就感
+- Audience: a student who already has some AI coursework under their belt and wants to skip the theory and build something real
+- Teaching approach: skip the fundamentals of generative AI and agentic AI, go straight to hands-on implementation
+- Deliverable: a "telecom customer-service AI agent (multi-agent)" close to a real business need
+- Core value: the satisfaction of shipping a real, working product
 
-## 虛構情境設定
+## Fictional Setting
 
-- 電信公司：**Blazz**
-- AI 客服代理人暱稱：**Blake**（Voiceflow 對話前端與所有情境範例中，Agent 都以「Blake」的身份跟客戶對話）
+- Carrier: **Blazz**
+- AI agent's persona name: **Blake** (in the Voiceflow front end and every scenario example, the agent talks to customers as "Blake")
 
-## 課程總覽
+## Course Overview
 
-五堂課、每堂 90 分鐘，建議節奏是每週兩堂（例如週二、四）。每堂的完整內容（課程目標、開通帳號、背景知識、課堂內容、Deliverables、課後練習、分鐘級 Rundown）都拆到獨立檔案：
+Five units, ~90 minutes each. Each unit's full detail (learning objectives, accounts to set up, background knowledge, class content, deliverables, minute-by-minute rundown) lives in its own file:
 
-| 堂次 | 主題 | 連結 |
+| Unit | Topic | Link |
 | --- | --- | --- |
-| 第一堂 | 認識 Agent 三大要素：Context, Tool, Model | [weeks/week-1.md](weeks/week-1.md) |
-| 第二堂 | 建立 Context（RAG 靜態知識 ＋ Supabase 動態資料） | [weeks/week-2.md](weeks/week-2.md) |
-| 第三堂 | Multi-agent 設計與建立工作流程 | [weeks/week-3.md](weeks/week-3.md) |
-| 第四堂 | End-to-end 串接（網頁前端、後端、Logging） | [weeks/week-4.md](weeks/week-4.md) |
-| 第五堂 | Hardening（錯誤處理、Rate-limiting、資安、Scalability） | [weeks/week-5.md](weeks/week-5.md) |
+| Unit 1 | The Three Pillars of an Agent: Context, Tool, Model | [units/unit-1.md](units/unit-1.md) |
+| Unit 2 | Building Context (RAG for static knowledge + Supabase for dynamic data) | [units/unit-2.md](units/unit-2.md) |
+| Unit 3 | Multi-Agent Design & Building the Workflow | [units/unit-3.md](units/unit-3.md) |
+| Unit 4 | End-to-End Integration (web front end, backend, logging) | [units/unit-4.md](units/unit-4.md) |
+| Unit 5 | Hardening (error handling, rate limiting, security, scalability) | [units/unit-5.md](units/unit-5.md) |
 
-> 這門課的實際上課日期、堂數費用等商業條件跟學員身分資訊，記錄在本機的 `student.local.md`（未進版控，不會出現在這個 repo 裡）。
+> Homework for each unit hasn't been designed yet — see the "Homework" section in each unit file.
+>
+> Actual session dates and commercial terms (and the student's identity) are kept locally in `student.local.md`, which is git-ignored and never appears in this repo.
 
-## 其他文件
+## Other Documents
 
-- [三個核心客服情境範例](scenarios.md) — 假資料與 demo 設計的參考劇本
-- [客服流程設計與系統架構](architecture.md) — 意圖分流、Human-in-the-loop、前端三通路規劃
-- [工具總覽與技術決策](tools.md) — 每個工具的用途、選型理由、費用方案
+- [scenarios.md](scenarios.md) — three core customer-service scenarios used as reference for fake data and demos
+- [architecture.md](architecture.md) — service flow design, human-in-the-loop, and the three-channel front-end rollout
+- [tools.md](tools.md) — every tool's purpose, why it was chosen, and its pricing tier
 
-## 技術棧一覽
+## Tech Stack at a Glance
 
-- 核心自動化平台：n8n Cloud（No-code）
-- 語言模型：Claude 3.5 Sonnet ＋ GPT-4o
-- Embedding：Voyage AI（Anthropic 官方推薦的合作夥伴）
-- 向量資料庫：Qdrant（或 Pinecone）
-- 動態資料：Supabase（雲端 Postgres）
-- 對話前端：Voiceflow（網頁 → WhatsApp → 電話，分階段）
-- 真人介入：Slack
+- Core automation platform: n8n Cloud (no-code)
+- Language models: Claude 3.5 Sonnet + GPT-4o
+- Embedding: Voyage AI (Anthropic's official recommended partner)
+- Vector database: Qdrant (or Pinecone)
+- Dynamic data: Supabase (managed Postgres)
+- Conversational front end: Voiceflow (web → WhatsApp → phone, staged)
+- Human-in-the-loop: Slack
 
-細節與選型理由見 [tools.md](tools.md)。
+See [tools.md](tools.md) for the reasoning behind each choice.
 
-## 給 Claude Code 的提醒
+## Note for Claude Code
 
-開始任何跟這個教學專案相關的任務前，先讀 [`CLAUDE.md`](CLAUDE.md)。
+Read [`CLAUDE.md`](CLAUDE.md) before doing anything related to this workshop.

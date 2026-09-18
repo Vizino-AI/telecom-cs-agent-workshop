@@ -1,55 +1,55 @@
-# 三個核心客服情境範例
+# Three Core Customer-Service Scenarios
 
-[← 回課程總覽](../README.md)
+[← Back to course overview](README.md)
 
-這三個情境貼近真實電信業商業需求，剛好完整涵蓋 RAG、API 查詢與 Human-in-the-loop，很適合直接當作實作 Multi-agent 的劇本。設計假資料、測試案例、demo 情境時，優先參考這三個劇本；[第一堂](weeks/week-1.md)的作業可以直接引導學員往這三個方向設計 Blazz 的假資料。
+These three scenarios stay close to real telecom business needs and together cover RAG, API lookups, and human-in-the-loop — a great script to build the multi-agent implementation around. Prefer these three scenarios when designing fake data, test cases, or demos; [Unit 1](units/unit-1.md)'s homework can point the student toward these three directions when designing Blazz's fake data.
 
-## 情境一：帳務查詢與方案推薦（Billing & Upsell）
+## Scenario 1: Billing Inquiry & Plan Upsell
 
-電信業最基礎也最常發生的情境，適合測試 Agent 的邏輯判斷與資料調用能力。
+The most basic, most common telecom scenario — good for testing an agent's logical reasoning and data-lookup ability.
 
-**用戶觸發**：「為什麼我這個月的帳單爆增到 2000 多塊？」
+**Customer message**: "Why did my bill jump to over $2,000 this month?"
 
-**處理流程**：
+**Flow**:
 
-1. 意圖辨識：Router Agent 判斷為帳務問題，轉交「帳務客服 Agent」
-2. 呼叫工具（API）：觸發 API 查詢該用戶本月帳單明細（[第二堂](weeks/week-2.md)建好的 Supabase 假帳務資料表）
-3. 分析與回覆：發現是用戶出國使用了漫遊數據，向用戶解釋費用來源
-4. 順水推舟（Upsell）：根據用戶常出國的行為，主動推薦「每月 $500 全球漫遊吃到飽」方案
+1. Intent classification: the router agent classifies this as a billing question and hands off to the "billing support agent"
+2. Call a tool (API): trigger an API call to look up this customer's billing detail for the month (the fake billing table built in [Unit 2](units/unit-2.md) in Supabase)
+3. Analyze & respond: discover the customer used roaming data abroad, and explain the source of the charge
+4. Upsell: based on the customer's frequent-travel pattern, proactively recommend the "$500/month global roaming unlimited" plan
 
-**n8n 實作亮點**：練習讓 Agent 呼叫 Supabase 查詢假客戶資料，並展現 AI 分析數據的能力。
+**n8n highlight**: practice having the agent call Supabase to fetch fake customer data, and demonstrate the AI's ability to analyze that data.
 
-## 情境二：網路斷線技術排解（Tech Support & Troubleshooting）
+## Scenario 2: Internet Outage Troubleshooting
 
-展現 RAG（知識庫檢索）與 Human-in-the-loop（真人介入）結合的情境。
+Shows RAG (knowledge-base retrieval) combined with human-in-the-loop (human handoff).
 
-**用戶觸發**：「我家的網路一直斷線，已經重開機三次了還是沒用！」
+**Customer message**: "My internet keeps dropping — I've rebooted three times already and it's still not working!"
 
-**處理流程**：
+**Flow**:
 
-1. 意圖辨識：Router Agent 判斷為技術問題，轉交「技術客服 Agent」
-2. 知識檢索（RAG）：進入向量資料庫搜尋「網路斷線 FAQ」，找出標準排解步驟（例如檢查機上盒燈號）
-3. 初步排解：引導用戶看燈號，若回報「燈號亮紅燈」則判斷無法軟體排除
-4. 呼叫支援（Slack）：觸發 n8n 的 Wait 與 Slack 節點，把對話紀錄傳給真人主管
-5. 真人接手：主管在 Slack 點擊「核准派工」，AI 回覆用戶已安排工程師檢修
+1. Intent classification: the router agent classifies this as a technical issue and hands off to the "technical support agent"
+2. Knowledge retrieval (RAG): search the vector database for "internet outage FAQ" to find the standard troubleshooting steps (e.g. checking the set-top box's status lights)
+3. Initial troubleshooting: walk the customer through checking the light; if they report a red light, conclude it can't be resolved via software
+4. Escalate (Slack): trigger n8n's Wait and Slack nodes to send the conversation history to a human supervisor
+5. Human takes over: the supervisor clicks "approve dispatch" in Slack, and the AI tells the customer a technician has been scheduled
 
-**n8n 實作亮點**：[第二堂](weeks/week-2.md)的 RAG 知識庫與[第四堂](weeks/week-4.md)的 Slack 真人介入在此完美發揮。
+**n8n highlight**: [Unit 2](units/unit-2.md)'s RAG knowledge base and [Unit 4](units/unit-4.md)'s Slack human-in-the-loop both shine here.
 
-## 情境三：解約退費與客訴挽留（Cancellation & Retention）
+## Scenario 3: Cancellation & Retention
 
-考驗 AI 情緒感知與商業談判能力的高階情境，適合放在[第五堂](weeks/week-5.md) Hardening／奧客極限測試。
+A more advanced scenario that tests the AI's emotional awareness and negotiation skills — good for [Unit 5](units/unit-5.md)'s hardening/difficult-customer stress test.
 
-**用戶觸發**：「你們收訊有夠差，我要客訴！我要解約退費，馬上寄表單給我！」
+**Customer message**: "Your signal is terrible! I want to file a complaint! I want to cancel and get a refund — send me the form right now!"
 
-**處理流程**：
+**Flow**:
 
-1. 意圖與情緒辨識：偵測到強烈負面情緒與解約意圖
-2. 知識檢索（RAG）：查詢合約知識庫，計算用戶目前解約需支付的違約金
-3. 安撫與挽留（Hidden Offer）：不直接給退費表單，先說明違約金，並提供隱藏版優惠（例如前三個月免月租費）爭取再給一次機會
-4. 自動化工具（Email）：若用戶依然堅持解約，觸發 Email 節點自動寄出解約申請書
+1. Intent & sentiment classification: detect strong negative sentiment and cancellation intent
+2. Knowledge retrieval (RAG): look up the contract knowledge base to calculate the early-termination fee the customer would owe
+3. De-escalate & retain (hidden offer): don't hand over the cancellation form immediately — first explain the termination fee, then offer a hidden retention deal (e.g. three months free) to try to win back the customer
+4. Automated tool (email): if the customer still insists on cancelling, trigger an email node to automatically send the cancellation request form
 
-**n8n 實作亮點**：測試 AI 在 Prompt 中被設定的「挽留底線」，並串接 Email 節點完成表單發送。
+**n8n highlight**: test the "retention floor" the AI is instructed to hold in its prompt, and wire up the email node to complete the form-sending step.
 
 ---
 
-這三個例子包含了查資料、查文件、找救兵、寄信，剛好能讓學員體驗到 Agent 有了「手腳」之後有多強大。
+Together these three examples cover looking up data, searching documents, escalating for help, and sending email — exactly what shows the student how powerful an agent becomes once it has "hands and feet."
