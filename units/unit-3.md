@@ -10,7 +10,7 @@ Learn to use n8n to wire multiple specialized agents into a single workflow that
 
 - **n8n Cloud**: 14-day free trial; continuing past that requires a paid plan (exact plan and pricing to be checked at the time)
 
-## Background Knowledge Needed
+## Nice to Know
 
 - **What a Webhook is**: how n8n receives an external trigger
 - **Conditional logic/flow control**: Switch/Set nodes are really just if-else under the hood

@@ -13,7 +13,7 @@ Wire the whole system into a working web-based customer-service experience a rea
 - Email/SMTP: reuse an existing email account or n8n's built-in node — usually no new signup needed
 - (Needed for homework) **Twilio**: required for WhatsApp/phone integration; has a free trial allowance, but a real phone number/production message volume requires a paid plan plus usage-based billing
 
-## Background Knowledge Needed
+## Nice to Know
 
 - **Webhooks (two-way)**: the Voiceflow front end calls the n8n backend, which replies back to the front end
 - **SMTP/email basics**: why you need to configure an outgoing mail server

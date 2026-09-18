@@ -10,7 +10,7 @@ Learn to use a "difficult-customer stress test" mindset to find the system's wea
 
 None.
 
-## Background Knowledge Needed
+## Nice to Know
 
 - **Rate limiting**: what request throttling is, and why it matters
 - **Common security concepts**: least-privilege access, data masking/encryption

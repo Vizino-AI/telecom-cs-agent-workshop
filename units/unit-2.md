@@ -13,7 +13,7 @@ Understand Context's two faces — RAG for static knowledge, Supabase for dynami
 - **Supabase**: free tier (plenty for this course's scale); upgrading to paid only matters at higher usage or for more features
 - Postman (optional): the free tier is enough; using curl instead means no account at all
 
-## Background Knowledge Needed
+## Nice to Know
 
 - **HTTP basics**: request/response, methods (GET/POST), endpoints, headers, body
 - **HTTPS and API key/Bearer token auth**: why an API call needs a key, and why data gets encrypted in transit
