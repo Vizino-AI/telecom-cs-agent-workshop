@@ -6,9 +6,14 @@
 
 Build the mental model "Agent = Model + Tool + Context," and learn to judge, for a given customer-service scenario, which information belongs in which pillar.
 
-## Accounts to Set Up
+## Pre-Reading
 
-None.
+[Modern Agent = LLM + Context + Tools](https://github.com/bojieli/ai-agent-book/blob/main/book-en/chapter1.md#modern-agent--llm--context--tools)
+
+
+## Setup
+
+Done live in class: GitHub account, Visual Studio Code, Git.
 
 ## Background Knowledge Needed
 
@@ -17,24 +22,16 @@ None.
 
 ## Class Content
 
-- 15-minute intro: project goals, the three-pillar framework, the five-unit roadmap
-- Break down Model/Tool/Context using the Blazz scenario (Model division of labor: Claude handles high-logic work, GPT-4o collaborates; be clear about which decisions go to the Model vs. which are hard-coded in nodes)
-- Prepare Blazz's fake data (plan pricing, contract terms, FAQs), and sort it into Context vs. Tool
-- Sketch a first-draft agent architecture diagram (frame out the three Model/Tool/Context blocks, then refine)
-
-### 90-Minute Rundown
-
-| Time | Content |
-| --- | --- |
-| 0:00–0:15 | Intro overview: project goals, the three-pillar framework, the five-unit roadmap |
-| 0:15–0:40 | Break down the three pillars using the Blazz scenario: Model is mainly about division of labor, plus which decisions go to the Model vs. which are hard-coded in nodes |
-| 0:40–1:10 | Prepare Blazz's fake data, sort it into Context vs. Tool |
-| 1:10–1:30 | Sketch the first-draft agent architecture diagram, assign homework |
+- Intro: project goals, the three-pillar framework, the five-unit roadmap (15 mins)
+- Break down Model/Tool/Context using the Blazz scenario — Model is mainly about division of labor (Claude for high-logic work, GPT-4o collaborates), plus which decisions go to the Model vs. which are hard-coded in nodes (15 mins)
+- Review the [three core scenarios](../scenarios.md) together: for each, discuss what a customer-service person (or agent) needs to know — company data, customer info, background knowledge — sort into Context vs. Tool, and check whether the fake data prepared so far is complete enough to support all three (25 mins)
+- Fill in any gaps found in that review — prepare the remaining example data points for Blazz (plan pricing, contract terms, FAQs) (15 mins)
+- Sketch a first-draft agent architecture diagram, framing out the three Model/Tool/Context blocks (20 mins)
 
 ## Deliverables
 
 - A first-draft agent architecture diagram (Model/Tool/Context)
-- Fake data, roughly organized and tagged by category
+- Example data for Blazz, checked against the three core scenarios and tagged as Context or Tool
 
 ## Homework
 

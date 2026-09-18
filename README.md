@@ -16,7 +16,7 @@ A five-unit, hands-on workshop: skip the theory behind generative AI and agentic
 
 ## Course Overview
 
-Five units, ~90 minutes each. Each unit's full detail (learning objectives, accounts to set up, background knowledge, class content, deliverables, minute-by-minute rundown) lives in its own file:
+Five units, ~90 minutes each. Each unit's full detail (learning objectives, setup, background knowledge, timed class content, deliverables, homework) lives in its own file:
 
 | Unit | Topic | Link |
 | --- | --- | --- |
@@ -26,8 +26,6 @@ Five units, ~90 minutes each. Each unit's full detail (learning objectives, acco
 | Unit 4 | End-to-End Integration (web front end, backend, logging) | [units/unit-4.md](units/unit-4.md) |
 | Unit 5 | Hardening (error handling, rate limiting, security, scalability) | [units/unit-5.md](units/unit-5.md) |
 
-> Homework: TBD for every unit.
-
 ## Other Documents
 
 - [scenarios.md](scenarios.md) — three core customer-service scenarios used as reference for fake data and demos
@@ -36,13 +34,14 @@ Five units, ~90 minutes each. Each unit's full detail (learning objectives, acco
 
 ## Tech Stack at a Glance
 
-- Core automation platform: n8n Cloud (no-code)
-- Language models: Claude 3.5 Sonnet + GPT-4o
+- Core automation platform: n8n Cloud
+- Language models
 - Embedding: Voyage AI (Anthropic's official recommended partner)
-- Vector database: Qdrant (or Pinecone)
-- Dynamic data: Supabase (managed Postgres)
-- Conversational front end: Voiceflow (web → WhatsApp → phone, staged)
+- Vector database: TBD
+- Dynamic data: Supabase
+- Conversational front end: Voiceflow
 - Human-in-the-loop: Slack
+- Tooling: Postman, Github, Git, Visual Studio Code
 
 See [tools.md](tools.md) for the reasoning behind each choice.
 

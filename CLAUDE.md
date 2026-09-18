@@ -4,7 +4,7 @@
 
 A one-on-one workshop: teach a student to build, from scratch, a multi-agent AI customer-service system for a realistic telecom scenario (fictional carrier **Blazz**).
 
-Read [`README.md`](./README.md) first. Each unit's rundown, accounts, background knowledge, deliverables, and homework live under [`units/`](./units/); architecture and flow diagrams are in [`architecture.md`](./architecture.md); the three core scenarios are in [`scenarios.md`](./scenarios.md); tool choices and reasoning are in [`tools.md`](./tools.md).
+Read [`README.md`](./README.md) first. Each unit's timed class content, setup, background knowledge, deliverables, and homework live under [`units/`](./units/); architecture and flow diagrams are in [`architecture.md`](./architecture.md); the three core scenarios are in [`scenarios.md`](./scenarios.md); tool choices and reasoning are in [`tools.md`](./tools.md).
 
 This is a reusable template — keep student references generic ("the student"), not a specific name.
 

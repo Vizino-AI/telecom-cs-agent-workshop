@@ -6,7 +6,7 @@
 
 Wire the whole system into a working web-based customer-service experience a real person can use, with logging that makes it clear what the system is doing.
 
-## Accounts to Set Up
+## Setup
 
 - **Voiceflow**: has a free tier (limited features/usage, enough for this course); going live or scaling up may require a paid plan
 - **Slack**: a free workspace is enough for the human-in-the-loop features used here
@@ -21,21 +21,11 @@ Wire the whole system into a working web-based customer-service experience a rea
 
 ## Class Content
 
-- Review from last session, Q&A
-- Front end: design the conversation UI in Voiceflow, **first version covers only the "web" channel (web widget)** — get the full flow working end-to-end before expanding to other channels
-- Backend: automatic support-form emails, Slack human-in-the-loop (Blazz's internal review)
-- Logging: design a record of the conversation and the decisions made (who asked what, what the agent decided, whether it escalated to a human), to make debugging and tuning easier later
-- Wire the web front end, backend, and logging into one complete end-to-end flow and test it
-
-### 90-Minute Rundown
-
-| Time | Content |
-| --- | --- |
-| 0:00–0:10 | Review from last session, Q&A |
-| 0:10–0:35 | Front end: design the conversation UI in Voiceflow, wire up the "web" channel only |
-| 0:35–1:00 | Backend: design the support-form email and Slack human-in-the-loop |
-| 1:00–1:20 | Design logging, wire it into a complete end-to-end flow and test it |
-| 1:20–1:30 | Assign homework |
+- Review from last session, Q&A (10 mins)
+- Front end: design the conversation UI in Voiceflow, **first version covers only the "web" channel (web widget)** — get the full flow working end-to-end before expanding to other channels (25 mins)
+- Backend: automatic support-form emails, Slack human-in-the-loop (Blazz's internal review) (25 mins)
+- Logging: design a record of the conversation and the decisions made (who asked what, what the agent decided, whether it escalated to a human); wire the web front end, backend, and logging into one complete end-to-end flow and test it (20 mins)
+- Wrap-up (10 mins)
 
 ## Deliverables
 

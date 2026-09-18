@@ -19,6 +19,8 @@ In short, a vector database stores text after converting it into "semantic vecto
 | Language model | GPT-4o | Collaborates with Claude, used for some task comparisons and fallback |
 | Dev assistance | Claude Code/Cursor | Natural-language tweaks, fake-data generation, keeps the no-code experience intact |
 | API testing | Postman/curl | Unit 2 calls Voyage AI and Qdrant directly, hands-on with RAG's underlying mechanism |
+| Version control | Git + GitHub | Account and install done in Unit 1 |
+| Code editor | Visual Studio Code | Installed in Unit 1 |
 | Embedding | Voyage AI | Turns text into vectors; Anthropic's officially recommended partner (Anthropic doesn't offer its own embedding API) |
 | Conversational front end | Voiceflow | Designs the conversation flow, rolled out across web/WhatsApp/phone in stages |
 | Vector database | Qdrant (or Pinecone) | Stores embeddings of Blazz's contracts and FAQs for RAG retrieval |

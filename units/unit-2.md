@@ -6,7 +6,7 @@
 
 Understand Context's two faces — RAG for static knowledge, Supabase for dynamic data — and build both by calling raw APIs first, without n8n.
 
-## Accounts to Set Up
+## Setup
 
 - **Qdrant Cloud**: free (free tier, permanent allowance)
 - **Voyage AI**: new accounts usually get a free trial allowance; usage-based billing kicks in after that
@@ -23,23 +23,13 @@ Understand Context's two faces — RAG for static knowledge, Supabase for dynami
 
 ## Class Content
 
-- Review from last session, Q&A
-- Where Context comes from: static knowledge vs. dynamic data vs. conversation history
-- Quick overview of vector databases, a light comparison of Qdrant vs. Pinecone (just enough, no deep dive)
-- **Build RAG by hand, without n8n**: use Postman/curl to call Voyage AI, turn Blazz's contracts/FAQs into vectors, and store them in Qdrant; then use the same API to run a query
-- **Build the dynamic-data side**: set up Supabase, create a simple fake billing/account table (the "dynamic data" piece), and load in the billing/plan fake data prepared in Unit 1
-
-### 90-Minute Rundown
-
-| Time | Content |
-| --- | --- |
-| 0:00–0:10 | Review from last session, Q&A |
-| 0:10–0:20 | Where Context comes from: static knowledge vs. dynamic data vs. conversation history |
-| 0:20–0:28 | Quick vector-database overview, light comparison of Qdrant vs. Pinecone |
-| 0:28–0:55 | Hands-on: call Voyage AI directly via Postman/curl, turn Blazz's contracts and FAQs into vectors, store them in Qdrant Cloud (no n8n) |
-| 0:55–1:10 | Hands-on: query the same API, turn a question into a vector, and get back the most relevant original text |
-| 1:10–1:25 | Hands-on: set up Supabase, create a simple fake billing/account table, load in dynamic data |
-| 1:25–1:30 | Assign homework |
+- Review from last session, Q&A (10 mins)
+- Where Context comes from: static knowledge vs. dynamic data vs. conversation history (10 mins)
+- Quick overview of vector databases, a light comparison of Qdrant vs. Pinecone — just enough, no deep dive (8 mins)
+- **Build RAG by hand, without n8n**: use Postman/curl to call Voyage AI, turn Blazz's contracts/FAQs into vectors, and store them in Qdrant Cloud (27 mins)
+- Hands-on: query the same API, turn a question into a vector, and get back the most relevant original text (15 mins)
+- **Build the dynamic-data side**: set up Supabase, create a simple fake billing/account table, and load in the billing/plan fake data prepared in Unit 1 (15 mins)
+- Wrap-up (5 mins)
 
 ## Deliverables
 

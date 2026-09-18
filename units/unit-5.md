@@ -6,7 +6,7 @@
 
 Learn to use a "difficult-customer stress test" mindset to find the system's weak points, and shore up the protections it needs before going live.
 
-## Accounts to Set Up
+## Setup
 
 None.
 
@@ -18,23 +18,12 @@ None.
 
 ## Class Content
 
-- Review from last session, Q&A
-- Error handling: fallback design for API timeouts/failures, malformed LLM output, and Context lookups that come back empty
-- Rate limiting: protecting the agent and backend APIs from being overwhelmed by a single user or a malicious script
-- Security: access control and data masking when handling customer PII (phone numbers, billing info)
-- Scalability: what to watch for when going from a single test case to Blazz's full company scale
-- Run real difficult-customer scenarios as a stress test to validate the hardening above
-
-### 90-Minute Rundown
-
-| Time | Content |
-| --- | --- |
-| 0:00–0:10 | Review from last session, Q&A |
-| 0:10–0:30 | Error handling and fallback design |
-| 0:30–0:45 | Rate-limiting design |
-| 0:45–1:00 | Security: access control and data masking |
-| 1:00–1:15 | Scalability discussion, run the difficult-customer stress test |
-| 1:15–1:30 | Final demo, wrap-up |
+- Review from last session, Q&A (10 mins)
+- Error handling: fallback design for API timeouts/failures, malformed LLM output, and Context lookups that come back empty (20 mins)
+- Rate limiting: protecting the agent and backend APIs from being overwhelmed by a single user or a malicious script (15 mins)
+- Security: access control and data masking when handling customer PII (phone numbers, billing info) (15 mins)
+- Scalability: what to watch for when going from a single test case to Blazz's full company scale; run real difficult-customer scenarios as a stress test to validate the hardening above (15 mins)
+- Final demo, wrap-up (15 mins)
 
 ## Deliverables
 
