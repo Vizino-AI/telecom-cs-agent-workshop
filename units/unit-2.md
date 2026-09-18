@@ -41,8 +41,6 @@ Understand Context's two faces — RAG for static knowledge, Supabase for dynami
 | 1:10–1:25 | Hands-on: set up Supabase, create a simple fake billing/account table, load in dynamic data |
 | 1:25–1:30 | Assign homework |
 
-> **Why not just build this in n8n**: n8n's Embeddings/Vector Store nodes really are faster to pick up than calling raw APIs by hand — but the point is for the student to understand from day one that "this is really just two HTTP APIs," not just "drag nodes around in n8n to look things up." n8n is convenient, but it isn't the only way, and understanding stays intact even if it's swapped out later. Unit 3 immediately replaces this API pair with n8n nodes, so the student sees the node is just a shell around the same thing.
-
 ## Deliverables
 
 - A queryable Qdrant collection loaded with embeddings of Blazz's contracts/FAQs, verified via API to return the right passages
@@ -50,7 +48,7 @@ Understand Context's two faces — RAG for static knowledge, Supabase for dynami
 
 ## Homework
 
-_Not decided yet._
+TBD
 
 ---
 

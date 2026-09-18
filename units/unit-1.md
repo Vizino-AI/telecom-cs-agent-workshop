@@ -8,7 +8,7 @@ Build the mental model "Agent = Model + Tool + Context," and learn to judge, for
 
 ## Accounts to Set Up
 
-None yet (n8n / Qdrant / Voyage AI / Supabase are all deferred until Units 2–3 — see the note below).
+None.
 
 ## Background Knowledge Needed
 
@@ -31,8 +31,6 @@ None yet (n8n / Qdrant / Voyage AI / Supabase are all deferred until Units 2–3
 | 0:40–1:10 | Prepare Blazz's fake data, sort it into Context vs. Tool |
 | 1:10–1:30 | Sketch the first-draft agent architecture diagram, assign homework |
 
-> The n8n Cloud signup and interface tour move to the start of Unit 3 — this unit doesn't touch n8n at all. The free trial is only 14 days, and workflow-building doesn't actually start until Unit 3, so the account is opened that day instead, to avoid burning the trial early.
-
 ## Deliverables
 
 - A first-draft agent architecture diagram (Model/Tool/Context)
@@ -40,7 +38,7 @@ None yet (n8n / Qdrant / Voyage AI / Supabase are all deferred until Units 2–3
 
 ## Homework
 
-_Not decided yet._
+TBD
 
 ---
 

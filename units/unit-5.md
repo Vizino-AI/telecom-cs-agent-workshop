@@ -8,7 +8,7 @@ Learn to use a "difficult-customer stress test" mindset to find the system's wea
 
 ## Accounts to Set Up
 
-None (this unit reuses and hardens the services already set up).
+None.
 
 ## Background Knowledge Needed
 
@@ -42,7 +42,7 @@ A system that has passed the difficult-customer stress test, with error handling
 
 ## Homework
 
-None (this is the last unit — the final demo, wrap-up, and next-steps discussion all happen in class).
+None.
 
 ---
 

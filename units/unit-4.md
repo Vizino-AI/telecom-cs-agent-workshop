@@ -43,7 +43,7 @@ A working end-to-end demo: a web-based conversation wired to the backend (email 
 
 ## Homework
 
-_Not decided yet._ (This unit's original plan included having the student wire up WhatsApp/phone via Twilio on their own — that used to be its own class session and was folded into homework instead, to keep class time free for Unit 5's hardening work. That specific assignment still needs to be written up.)
+TBD
 
 ---
 

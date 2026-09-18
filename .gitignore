@@ -1,5 +1,2 @@
-# Student identity and commercial terms — not committed
-student.local.md
-
-# OS / editor junk
+*.local.md
 .DS_Store

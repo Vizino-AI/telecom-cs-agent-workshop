@@ -43,7 +43,7 @@ A working multi-agent workflow in n8n (intent triage + wired-up RAG node + a bil
 
 ## Homework
 
-_Not decided yet._
+TBD
 
 ---
 

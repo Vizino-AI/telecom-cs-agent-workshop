@@ -26,9 +26,7 @@ Five units, ~90 minutes each. Each unit's full detail (learning objectives, acco
 | Unit 4 | End-to-End Integration (web front end, backend, logging) | [units/unit-4.md](units/unit-4.md) |
 | Unit 5 | Hardening (error handling, rate limiting, security, scalability) | [units/unit-5.md](units/unit-5.md) |
 
-> Homework for each unit hasn't been designed yet — see the "Homework" section in each unit file.
->
-> Actual session dates and commercial terms (and the student's identity) are kept locally in `student.local.md`, which is git-ignored and never appears in this repo.
+> Homework: TBD for every unit.
 
 ## Other Documents
 

@@ -31,7 +31,7 @@ flowchart TD
 
 ## Front-End Design (Voiceflow, Three Channels, Staged Rollout)
 
-The conversational front end is designed once in Voiceflow and rolled out across three channels in stages — **the web channel is built in [Unit 4](units/unit-4.md)'s class time; WhatsApp and phone are left as Unit 4 homework for the student to wire up on their own** (no separate class session is scheduled for them; that class time instead goes to [Unit 5](units/unit-5.md)'s hardening work):
+The conversational front end is designed once in Voiceflow and rolled out across three channels in stages — **the web channel is built in [Unit 4](units/unit-4.md)'s class time; WhatsApp and phone are left as Unit 4 homework for the student to wire up on their own**:
 
 - **Web (widget)**: embed the published Voiceflow snippet into Blazz's website/customer portal as a floating chat window — good for text-based support and billing lookups (built in Unit 4's class time)
 - **Phone (voice/IVR)**: Voiceflow's voice channel lets customers call Blazz's support line and talk to the agent directly — good for customers who can't type, or for a legacy phone-support operation transitioning over (Unit 4 homework)
