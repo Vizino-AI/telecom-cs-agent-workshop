@@ -1,4 +1,4 @@
-# Unit 2: Building Context
+# Unit 2: Building the Agent's Eyes — Context
 
 [← Back to course overview](../README.md)
 
@@ -42,4 +42,4 @@ TBD
 
 ---
 
-[← Previous: The Three Pillars of an Agent](unit-1.md) ｜ [Next: Multi-Agent Design & Building the Workflow →](unit-3.md)
+[← Previous: The Three Pillars of an Agent](unit-1.md) ｜ [Next: Building the Agent's Brains and Hands →](unit-3.md)

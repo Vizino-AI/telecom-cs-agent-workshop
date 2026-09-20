@@ -1,4 +1,4 @@
-# Unit 3: Multi-Agent Design & Building the Workflow
+# Unit 3: Building the Agent's Brains and Hands — Multi-Agent Model Design & Tool Wiring
 
 [← Back to course overview](../README.md)
 
@@ -35,4 +35,4 @@ TBD
 
 ---
 
-[← Previous: Building Context](unit-2.md) ｜ [Next: End-to-End Integration →](unit-4.md)
+[← Previous: Building the Agent's Eyes](unit-2.md) ｜ [Next: Completing the Agent's Hands and Feet →](unit-4.md)

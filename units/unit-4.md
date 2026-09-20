@@ -1,4 +1,4 @@
-# Unit 4: End-to-End Integration (Web Front End, Backend, Logging)
+# Unit 4: Completing the Agent's Hands and Feet — End-to-End Tool Integration (Web Front End, Backend, Logging)
 
 [← Back to course overview](../README.md)
 
@@ -37,4 +37,4 @@ TBD
 
 ---
 
-[← Previous: Multi-Agent Design & Building the Workflow](unit-3.md) ｜ [Next: Hardening →](unit-5.md)
+[← Previous: Building the Agent's Brains and Hands](unit-3.md) ｜ [Next: Hardening the Agent →](unit-5.md)

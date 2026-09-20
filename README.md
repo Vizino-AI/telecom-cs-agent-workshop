@@ -20,11 +20,11 @@ Five units, ~90 minutes each. Each unit's full detail (learning objectives, setu
 
 | Unit | Topic | Link |
 | --- | --- | --- |
-| Unit 1 | The Three Pillars of an Agent: Context, Tool, Model | [units/unit-1.md](units/unit-1.md) |
-| Unit 2 | Building Context (RAG for static knowledge + Supabase for dynamic data) | [units/unit-2.md](units/unit-2.md) |
-| Unit 3 | Multi-Agent Design & Building the Workflow | [units/unit-3.md](units/unit-3.md) |
-| Unit 4 | End-to-End Integration (web front end, backend, logging) | [units/unit-4.md](units/unit-4.md) |
-| Unit 5 | Hardening (error handling, rate limiting, security, scalability) | [units/unit-5.md](units/unit-5.md) |
+| Unit 1 | The Three Pillars of an Agent: Model (Brain), Context (Eyes), Tool (Hands & Feet) | [units/unit-1.md](units/unit-1.md) |
+| Unit 2 | Building the Agent's Eyes: Context (RAG for static knowledge + Supabase for dynamic data) | [units/unit-2.md](units/unit-2.md) |
+| Unit 3 | Building the Agent's Brains and Hands: Multi-Agent Model Design & Tool Wiring | [units/unit-3.md](units/unit-3.md) |
+| Unit 4 | Completing the Agent's Hands and Feet: End-to-End Tool Integration (web front end, backend, logging) | [units/unit-4.md](units/unit-4.md) |
+| Unit 5 | Hardening the Agent's Model, Context & Tool: Guardrails, Evaluation & Reliability | [units/unit-5.md](units/unit-5.md) |
 
 ## Other Documents
 
