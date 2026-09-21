@@ -11,8 +11,8 @@ This is a reusable template — keep student references generic ("the student"),
 ## Tech Stack
 
 - Automation: **n8n Cloud** (no-code), account opened starting Unit 3
-- Language models: **Claude 3.5 Sonnet** + **GPT-4o**
-- Conversational front end: **Voiceflow** — web in Unit 4, WhatsApp/phone as homework
+- Language models: **Gemini Flash** + **GPT-4o**
+- Conversational front end: **n8n Hosted Chat** (built-in Chat Trigger node) — web only, built in Unit 4
 - Vector database: **Qdrant** (or Pinecone) + **Voyage AI** for embedding
 - Dynamic data: **Supabase** (managed Postgres)
 - Human-in-the-loop: **Slack**

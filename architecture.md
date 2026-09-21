@@ -29,15 +29,13 @@ flowchart TD
     I --> G
 ```
 
-## Front-End Design (Voiceflow, Three Channels, Staged Rollout)
+## Front-End Design (n8n Chat Trigger, Web Only)
 
-The conversational front end is designed once in Voiceflow and rolled out across three channels in stages — **the web channel is built in [Unit 4](units/unit-4.md)'s class time; WhatsApp and phone are left as Unit 4 homework for the student to wire up on their own**:
+The conversational front end is n8n's own **Chat Trigger** node, built in [Unit 4](units/unit-4.md)'s class time:
 
-- **Web (widget)**: embed the published Voiceflow snippet into Blazz's website/customer portal as a floating chat window — good for text-based support and billing lookups (built in Unit 4's class time)
-- **Phone (voice/IVR)**: Voiceflow's voice channel lets customers call Blazz's support line and talk to the agent directly — good for customers who can't type, or for a legacy phone-support operation transitioning over (Unit 4 homework)
-- **WhatsApp**: Voiceflow's WhatsApp integration (requires linking the WhatsApp Business API/Twilio) lets customers interact inside a chat app they already use — good for markets like Southeast Asia/Middle East with high WhatsApp usage (Unit 4 homework)
+- **Web (Hosted Chat)**: the Chat Trigger node, set to Hosted Chat mode, serves a ready-made chat page directly — no separate front-end tool, embed code, or account needed (built in Unit 4's class time)
 
-All three channels share the same Voiceflow conversation logic; whenever data needs to be looked up or an action taken, they all call the n8n backend via Webhook (RAG lookups, ticket creation, billing queries, human handoff).
+This is a narrower scope than a dedicated conversational-design platform would give — web only, no phone/WhatsApp channel — traded off deliberately for one fewer tool to learn and a front end that works out of the box (see [tools.md](tools.md) for the reasoning). Data lookups and actions (RAG lookups, ticket creation, billing queries, human handoff) happen entirely within the same n8n workflow — no external webhook call needed, since the front end and backend are the same tool.
 
 ## Blazz Internal Support Ops (Slack Human-in-the-Loop)
 
