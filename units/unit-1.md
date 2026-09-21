@@ -1,10 +1,10 @@
-# Unit 1: The Three Pillars of an Agent — Context, Tool, Model
+# Unit 1: The Three Components of an Agent — Model, Context, Tool
 
 [← Back to course overview](../README.md)
 
 ## Learning Objectives
 
-Build the mental model "Agent = Model + Tool + Context," and learn to judge, for a given customer-service scenario, which information belongs in which pillar.
+Build the mental model "Agent = Model (brain) + Context (eyes) + Tool (hands & feet)," and learn to judge, for a given customer-service scenario, which information or decision belongs in which pillar.
 
 ## Before Class
 
@@ -20,24 +20,24 @@ GitHub account, Visual Studio Code, Git.
 - **What an API is**: the interface for talking to an external system, and why a Tool needs one
 - **The idea of a no-code automation platform**: why use n8n instead of writing code
 
-## Class Content
+## Topics Covered
 
-- Intro: project goals, the three-pillar framework, the five-unit roadmap (10 mins)
-- Discuss the pre-class list of company data types (FAQ, phone plans, customer data, etc.): strategies and methods for actually preparing/gathering each kind (15 mins)
-- Break down Model/Tool/Context using the Blazz scenario — Model is mainly about division of labor (Claude for high-logic work, GPT-4o collaborates), plus which decisions go to the Model vs. which are hard-coded in nodes (15 mins)
-- Review the [three core scenarios](../scenarios.md) together: check whether the example data prepared so far is complete enough for each, sort into Context vs. Tool (20 mins)
-- Fill in any gaps found in that review — prepare the remaining example data points for Blazz (plan pricing, contract terms, FAQs) (15 mins)
-- Sketch a first-draft agent architecture diagram, framing out the three Model/Tool/Context blocks (15 mins)
+- Course goals and a preview of the end-to-end system, with a live high-level architecture sketch
+- The agent's three elements — Model, Context, Tool — and how they map to the rest of the course
+- A quick survey of common agent types (search, file-reading, coding, ...)
+- A deep dive into Blazz's customer-service scenarios: common problems, SOPs, the data each needs, and how to delegate the SOP to an agent
+- Mapping each step of that SOP onto Model / Context / Tool
 
 ## Deliverables
 
-- A first-draft agent architecture diagram (Model/Tool/Context)
-- Example data for Blazz, checked against the three core scenarios and tagged as Context or Tool
+- A first-draft workflow for handling Blazz's most common customer-service SOP, mapped onto Model / Context / Tool
+- Example company data, checked against what that SOP needs
 
 ## Homework
 
-Clean up and organize the company data prepared in class into a usable format — it gets imported into the "Context" in Unit 2.
+1. Refine the workflow sketched in class
+2. Clean up and organize the company data gathered: dynamic data (billing/plan) gets imported into Supabase in Unit 2, and static knowledge (FAQ/contracts) becomes the RAG knowledge base in Unit 3
 
 ---
 
-[Next: Building Context →](unit-2.md)
+[Next: Building the Agent's Eyes →](unit-2.md)

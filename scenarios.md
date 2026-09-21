@@ -33,7 +33,7 @@ Shows RAG (knowledge-base retrieval) combined with human-in-the-loop (human hand
 4. Escalate (Slack): trigger n8n's Wait and Slack nodes to send the conversation history to a human supervisor
 5. Human takes over: the supervisor clicks "approve dispatch" in Slack, and the AI tells the customer a technician has been scheduled
 
-**n8n highlight**: [Unit 2](units/unit-2.md)'s RAG knowledge base and [Unit 4](units/unit-4.md)'s Slack human-in-the-loop both shine here.
+**n8n highlight**: [Unit 3](units/unit-3.md)'s RAG knowledge base and [Unit 4](units/unit-4.md)'s Slack human-in-the-loop both shine here.
 
 ## Scenario 3: Cancellation & Retention
 

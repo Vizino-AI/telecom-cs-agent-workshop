@@ -12,7 +12,7 @@ A five-unit, hands-on workshop: skip the theory behind generative AI and agentic
 ## Fictional Setting
 
 - Carrier: **Blazz**
-- AI agent's persona name: **Blake** (in the Voiceflow front end and every scenario example, the agent talks to customers as "Blake")
+- AI agent's persona name: **Blake** (in the chat front end and every scenario example, the agent talks to customers as "Blake")
 
 ## Course Overview
 
@@ -20,11 +20,11 @@ Five units, ~90 minutes each. Each unit's full detail (learning objectives, setu
 
 | Unit | Topic | Link |
 | --- | --- | --- |
-| Unit 1 | The Three Pillars of an Agent: Context, Tool, Model | [units/unit-1.md](units/unit-1.md) |
-| Unit 2 | Building Context (RAG for static knowledge + Supabase for dynamic data) | [units/unit-2.md](units/unit-2.md) |
-| Unit 3 | Multi-Agent Design & Building the Workflow | [units/unit-3.md](units/unit-3.md) |
-| Unit 4 | End-to-End Integration (web front end, backend, logging) | [units/unit-4.md](units/unit-4.md) |
-| Unit 5 | Hardening (error handling, rate limiting, security, scalability) | [units/unit-5.md](units/unit-5.md) |
+| Unit 1 | The Three Pillars of an Agent: Model (Brain), Context (Eyes), Tool (Hands & Feet) | [units/unit-1.md](units/unit-1.md) |
+| Unit 2 | Building the Agent's Eyes: Context (dynamic data via Supabase, hands-on; RAG covered conceptually, built next unit) | [units/unit-2.md](units/unit-2.md) |
+| Unit 3 | Building the Agent's Brains and Hands: Multi-Agent Model Design, RAG Knowledge Base & Tool Wiring | [units/unit-3.md](units/unit-3.md) |
+| Unit 4 | Completing the Agent's Hands and Feet: End-to-End Tool Integration (web front end, backend, logging) | [units/unit-4.md](units/unit-4.md) |
+| Unit 5 | Hardening the Agent's Model, Context & Tool: Guardrails, Evaluation & Reliability | [units/unit-5.md](units/unit-5.md) |
 
 ## Other Documents
 
@@ -39,7 +39,7 @@ Five units, ~90 minutes each. Each unit's full detail (learning objectives, setu
 - Embedding: Voyage AI (Anthropic's official recommended partner)
 - Vector database: TBD
 - Dynamic data: Supabase
-- Conversational front end: Voiceflow
+- Conversational front end: n8n Hosted Chat (built-in Chat Trigger node)
 - Human-in-the-loop: Slack
 - Tooling: Postman, Github, Git, Visual Studio Code
 
