@@ -17,6 +17,7 @@ Learn to use n8n to wire multiple specialized agents into a single workflow that
 - **What a Webhook is**: how n8n receives an external trigger
 - **Conditional logic/flow control**: Switch/Set nodes are really just if-else under the hood
 - **Calling a REST API to query a database**: hooking up to the Supabase instance built in Unit 2
+- **RAG (Retrieval-Augmented Generation)**: turning documents into searchable embeddings so the agent can pull in relevant context at query time — needed once static knowledge (like Scenario 2's troubleshooting FAQ) is too big to paste directly into a system prompt
 
 ## Class Content
 
@@ -37,4 +38,4 @@ TBD
 
 ---
 
-[← Previous: Building the Agent's Eyes](unit-2.md) ｜ [Next: Completing the Agent's Hands and Feet →](unit-4.md)
+[← Previous: Blazz's First Working Bot](unit-2.md) ｜ [Next: Completing the Agent's Hands and Feet →](unit-4.md)
