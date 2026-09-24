@@ -40,4 +40,4 @@ GitHub account, Visual Studio Code, Git.
 
 ---
 
-[Next: Building the Agent's Eyes →](unit-2.md)
+[Next: Blazz's First Working Bot →](unit-2.md)
