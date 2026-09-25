@@ -29,6 +29,7 @@ Five units, ~90 minutes each. Each unit's full detail (learning objectives, setu
 ## Other Documents
 
 - [scenarios.md](scenarios.md) — three core customer-service scenarios used as reference for fake data and demos
+- [mock-data.md](mock-data.md) — ready-to-run SQL: schema and seed data (customers, plans, bills, travel history, technician scheduling)
 - [architecture.md](architecture.md) — service flow design, human-in-the-loop, and the web front-end design
 - [tools.md](tools.md) — every tool's purpose, why it was chosen, and its pricing tier
 
