@@ -30,7 +30,7 @@ None.
 - Security: access control and log redaction when handling customer PII (phone numbers, billing info) (10 mins)
 - **Build a mini evaluation set**: write ~10 fixed test conversations — including the guardrail and prompt-injection cases from above — and track pass rate as a repeatable check instead of eyeballing it (10 mins)
 - Scalability & stress test: what to watch for when going from a single test case to Blazz's full company scale; run the difficult-customer stress test together with the mini evaluation set to validate everything hardened above (10 mins)
-- Final demo, wrap-up (10 mins)
+- Final demo, wrap-up, and a future-improvement discussion — what to build or harden next, content still TBD (10 mins)
 
 ## Deliverables
 
@@ -42,4 +42,4 @@ None.
 
 ---
 
-[← Previous: Completing the Agent's Hands and Feet](unit-4.md) ｜ [Back to course overview](../README.md)
+[← Previous: One Agent, Three Scenarios](unit-4.md) ｜ [Back to course overview](../README.md)

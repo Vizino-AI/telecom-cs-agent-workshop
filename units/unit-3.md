@@ -1,41 +1,51 @@
-# Unit 3: Building the Agent's Brains and Hands — Multi-Agent Model Design & Tool Wiring
+# Unit 3: Completing All Three Scenarios — Tool Wiring & Human-in-the-Loop
 
 [← Back to course overview](../README.md)
 
 ## Learning Objectives
 
-Learn to use n8n to wire multiple specialized agents into a single workflow that triages and hands off correctly, and build the RAG knowledge base using n8n's built-in nodes.
+By the end of this unit, the student can:
+
+- Finish out a scenario's remaining Tools, reusing an established pattern instead of starting from scratch each time
+- Apply the Unit 2 pattern (Chat Trigger + AI Agent + Memory + Tools) to a new scenario, by duplicating and adapting an existing workflow
+- Store a reference document in Supabase Storage, and give an agent a Tool to fetch and read it
+- Wire up human-in-the-loop escalation through two different channels: Slack and Email
 
 ## Setup
 
-- **n8n Cloud**: 14-day free trial; continuing past that requires a paid plan (exact plan and pricing to be checked at the time)
-- **Qdrant Cloud**: free (free tier, permanent allowance)
-- **Voyage AI**: new accounts usually get a free trial allowance; usage-based billing kicks in after that
+Reuses the n8n instance, Supabase project, and LLM key from Unit 2 — including Supabase Storage, which lives in the same project. Two new accounts:
+
+- **Slack**: a free workspace is enough; for Scenario 2's escalation tool
+- Email/SMTP: reuse an existing email account or n8n's built-in node; for Scenario 3's cancellation-form tool
 
 ## Nice to Know
 
-- **What a Webhook is**: how n8n receives an external trigger
-- **Conditional logic/flow control**: Switch/Set nodes are really just if-else under the hood
-- **Calling a REST API to query a database**: hooking up to the Supabase instance built in Unit 2
-- **RAG (Retrieval-Augmented Generation)**: turning documents into searchable embeddings so the agent can pull in relevant context at query time — needed once static knowledge (like Scenario 2's troubleshooting FAQ) is too big to paste directly into a system prompt
+- **Reusing the Unit 2 pattern**: duplicate the Unit 2 workflow as a starting point for a new scenario — swap the system prompt and Tools, keep the Chat Trigger and Memory as they are
+- **Supabase Storage basics**: buckets and files, and fetching a file's contents through a Tool call — the same "agent calls a Tool that hits Supabase" pattern as the database Tools, just for a document instead of a row
+- **Slack Tool basics**: posting a message to a channel from an n8n Tool node
+- **Email Tool basics**: sending an email from an n8n Tool node
 
 ## Class Content
 
-- Sign up for n8n Cloud, Qdrant Cloud and Voyage AI; tour the n8n environment and interface; review from last session, Q&A (10 mins)
-- **Build the RAG knowledge base with n8n's built-in nodes**: load Blazz's contracts/FAQs, embed them via the Embeddings node (Voyage AI, or the HTTP Request node if no dedicated node exists), and store them in the Vector Store node (Qdrant) — the node wraps the same kind of raw HTTP call the student made by hand for Supabase last unit, so it's a shell, not a black box (25 mins)
-- Multi-agent architecture design: why split into multiple agents (intent triage, technical support, billing support) (10 mins)
-- Build the intent-triage skeleton using n8n's Switch/Set nodes (20 mins)
-- Assign each sub-agent its own Context and Tool (e.g. the technical-support agent queries the RAG node just built and fetches the matching device diagram from the Supabase Storage bucket built in Unit 2; the billing agent queries the Supabase table built in Unit 2 via an n8n node); wire up the full multi-agent workflow (20 mins)
-- Test a simple case to confirm handoff works smoothly; wrap-up (5 mins)
+- Review from last session: what's built (Scenario 1's Chat Trigger, AI Agent, Memory, identity-verification Tool) and today's plan (10 mins)
+- Finish Scenario 1: build the bill-lookup and rate-plan-lookup Tools, reusing last time's pattern (20 mins)
+- Build Scenario 2 (Internet Outage Troubleshooting): duplicate the Unit 2 workflow, upload the troubleshooting FAQ to Supabase Storage, add a Tool that fetches it, and add a Slack Tool that escalates to a human supervisor when the fix fails (30 mins)
+- Build Scenario 3 (Cancellation & Retention): duplicate the workflow again, upload the contract/termination-fee terms to Supabase Storage, add a Tool that fetches them, and add an Email Tool that sends the cancellation form (30 mins)
+
+> Heads up: this is already a full 90 minutes with zero buffer, and Unit 2 ran long even with a lighter plan. The two full-scenario builds are the likely overflow points — duplicating the Unit 2 workflow instead of rebuilding from scratch is the main time-saver already baked in here, but have a fallback ready to demo Scenario 3's build rather than have everyone build it hands-on if time is short.
 
 ## Deliverables
 
-A working multi-agent workflow in n8n: intent triage, a technical-support agent backed by a newly built RAG knowledge base (Qdrant + Voyage AI via n8n nodes) plus the Unit 2 device-diagram Storage bucket, and a billing agent that can successfully query the fake Supabase table data
+Three working n8n bots:
+
+- Scenario 1 (billing), now complete with all three Tools: identity verification, bill lookup, rate-plan lookup
+- Scenario 2 (outage troubleshooting), with the FAQ in Supabase Storage, a fetch Tool, and a Slack escalation Tool
+- Scenario 3 (cancellation & retention), with contract terms in Supabase Storage, a fetch Tool, and an Email Tool for the cancellation form
 
 ## Homework
 
-TBD
+Test Scenario 2 and Scenario 3 the same way you tested Scenario 1: use your own words, try to break them (e.g. ask about an outage issue that's not in the FAQ, or try to skip past the retention offer), and note down anything that felt fragile.
 
 ---
 
-[← Previous: Blazz's First Working Bot](unit-2.md) ｜ [Next: Completing the Agent's Hands and Feet →](unit-4.md)
+[← Previous: Blazz's First Working Bot](unit-2.md) ｜ [Next: One Agent, Three Scenarios →](unit-4.md)

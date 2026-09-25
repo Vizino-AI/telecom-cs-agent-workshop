@@ -2,7 +2,7 @@
 
 [← Back to course overview](README.md)
 
-These three scenarios stay close to real telecom business needs and together cover RAG, API lookups, and human-in-the-loop — a great script to build the multi-agent implementation around. Prefer these three scenarios when designing fake data, test cases, or demos; [Unit 1](units/unit-1.md)'s homework can point the student toward these three directions when designing Blazz's fake data.
+These three scenarios stay close to real telecom business needs and together cover tool calling, static-knowledge lookups, and human-in-the-loop — a great script to build the multi-agent implementation around. Prefer these three scenarios when designing fake data, test cases, or demos; [Unit 1](units/unit-1.md)'s homework can point the student toward these three directions when designing Blazz's fake data.
 
 ## Scenario 1: Billing Inquiry & Plan Upsell
 
@@ -21,19 +21,19 @@ The most basic, most common telecom scenario — good for testing an agent's log
 
 ## Scenario 2: Internet Outage Troubleshooting
 
-Shows RAG (knowledge-base retrieval) combined with human-in-the-loop (human handoff).
+Shows a Supabase Storage document lookup combined with human-in-the-loop (human handoff).
 
 **Customer message**: "My internet keeps dropping — I've rebooted three times already and it's still not working!"
 
 **Flow**:
 
 1. Intent classification: the router agent classifies this as a technical issue and hands off to the "technical support agent"
-2. Knowledge retrieval (RAG): search the vector database for "internet outage FAQ" to find the standard troubleshooting steps (e.g. checking the set-top box's status lights)
+2. Knowledge lookup: a Tool call fetches the troubleshooting FAQ from Supabase Storage for the standard steps (e.g. checking the set-top box's status lights)
 3. Initial troubleshooting: walk the customer through checking the light; if they report a red light, conclude it can't be resolved via software
 4. Escalate (Slack): trigger n8n's Wait and Slack nodes to send the conversation history to a human supervisor
 5. Human takes over: the supervisor clicks "approve dispatch" in Slack, and the AI tells the customer a technician has been scheduled
 
-**n8n highlight**: [Unit 3](units/unit-3.md)'s RAG knowledge base and [Unit 4](units/unit-4.md)'s Slack human-in-the-loop both shine here.
+**n8n highlight**: built end to end in [Unit 3](units/unit-3.md), including the Slack escalation.
 
 ## Scenario 3: Cancellation & Retention
 
@@ -44,7 +44,7 @@ A more advanced scenario that tests the AI's emotional awareness and negotiation
 **Flow**:
 
 1. Intent & sentiment classification: detect strong negative sentiment and cancellation intent
-2. Knowledge retrieval (RAG): look up the contract knowledge base to calculate the early-termination fee the customer would owe
+2. Knowledge lookup: a Tool call fetches the contract terms from Supabase Storage to calculate the early-termination fee the customer would owe
 3. De-escalate & retain (hidden offer): don't hand over the cancellation form immediately — first explain the termination fee, then offer a hidden retention deal (e.g. three months free) to try to win back the customer
 4. Automated tool (email): if the customer still insists on cancelling, trigger an email node to automatically send the cancellation request form
 
@@ -52,4 +52,4 @@ A more advanced scenario that tests the AI's emotional awareness and negotiation
 
 ---
 
-Together these three examples cover looking up data, searching documents, escalating for help, and sending email — exactly what shows the student how powerful an agent becomes once it has "hands and feet."
+Together these three examples cover looking up data, checking reference text, escalating for help, and sending email — exactly what shows the student how powerful an agent becomes once it has "hands and feet."

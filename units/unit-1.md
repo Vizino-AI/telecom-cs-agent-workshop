@@ -36,7 +36,7 @@ GitHub account, Visual Studio Code, Git.
 ## Homework
 
 1. Refine the workflow sketched in class
-2. Clean up and organize the company data gathered: dynamic data (billing/plan) gets imported into Supabase in Unit 2, and static knowledge (FAQ/contracts) becomes the RAG knowledge base in Unit 3
+2. Clean up and organize the company data gathered: dynamic data (billing/plan) gets imported into Supabase in Unit 2, and static knowledge (FAQ/contracts) gets pasted directly into each scenario agent's system prompt in Units 2–3
 
 ---
 

@@ -10,13 +10,12 @@ This is a reusable template — keep student references generic ("the student"),
 
 ## Tech Stack
 
-- Automation: **n8n Cloud** (no-code), account opened starting Unit 3
-- Language models: **Gemini Flash** + **GPT-4o**
-- Conversational front end: **n8n Hosted Chat** (built-in Chat Trigger node) — web only, built in Unit 4
-- Vector database: **Qdrant** (or Pinecone) + **Voyage AI** for embedding
-- Dynamic data: **Supabase** (managed Postgres)
-- Human-in-the-loop: **Slack**
-- Dev assistance: Claude Code/Cursor, kept to a no-code-friendly level
+- Automation: **n8n Cloud** (no-code), account opened starting Unit 2
+- Language models: **Gemini Flash** + **Gemini Pro**
+- Conversational front end: **n8n Chat Trigger** — web only, Hosted Chat mode built in Unit 2, switched to Embedded Chat on a custom HTML page in Unit 4
+- Dynamic data: **Supabase** (managed Postgres), plus **Supabase Storage** for reference documents (Unit 3)
+- Human-in-the-loop: **Slack** + **Email**
+- Dev assistance: Claude Code, kept to a no-code-friendly level
 
 See [`tools.md`](./tools.md) for why each tool was chosen.
 
@@ -30,5 +29,5 @@ See [`tools.md`](./tools.md) for why each tool was chosen.
 
 - This is a **teaching project**: keep fake data, n8n workflow examples, and prompt drafts simple enough to build live with the student — don't over-engineer
 - Keep `README.md` / `units/*.md` / `architecture.md` / `scenarios.md` / `tools.md` consistent with each other when you change the curriculum
-- Homework per unit is TBD — don't invent it unless asked
+- Homework is set per unit in each `units/*.md` file — don't invent or change it unless asked
 - Confirm with Katness before changing price, session count, or scheduling

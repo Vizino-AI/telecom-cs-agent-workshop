@@ -21,27 +21,25 @@ Five units, ~90 minutes each. Each unit's full detail (learning objectives, setu
 | Unit | Topic | Link |
 | --- | --- | --- |
 | Unit 1 | The Three Pillars of an Agent: Model (Brain), Context (Eyes), Tool (Hands & Feet) | [units/unit-1.md](units/unit-1.md) |
-| Unit 2 | Building the Agent's Eyes: Context (dynamic data via Supabase, hands-on; RAG covered conceptually, built next unit) | [units/unit-2.md](units/unit-2.md) |
-| Unit 3 | Building the Agent's Brains and Hands: Multi-Agent Model Design, RAG Knowledge Base & Tool Wiring | [units/unit-3.md](units/unit-3.md) |
-| Unit 4 | Completing the Agent's Hands and Feet: End-to-End Tool Integration (web front end, backend, logging) | [units/unit-4.md](units/unit-4.md) |
+| Unit 2 | Blazz's First Working Bot: Context, Memory & Tool Calling — Scenario 1, built hands-on in n8n | [units/unit-2.md](units/unit-2.md) |
+| Unit 3 | Completing All Three Scenarios: Tool Wiring & Human-in-the-Loop (Slack + Email) | [units/unit-3.md](units/unit-3.md) |
+| Unit 4 | One Agent, Three Scenarios: Front-Desk Triage, Confidence Fallback & Embedded Chat | [units/unit-4.md](units/unit-4.md) |
 | Unit 5 | Hardening the Agent's Model, Context & Tool: Guardrails, Evaluation & Reliability | [units/unit-5.md](units/unit-5.md) |
 
 ## Other Documents
 
 - [scenarios.md](scenarios.md) — three core customer-service scenarios used as reference for fake data and demos
-- [architecture.md](architecture.md) — service flow design, human-in-the-loop, and the three-channel front-end rollout
+- [architecture.md](architecture.md) — service flow design, human-in-the-loop, and the web front-end design
 - [tools.md](tools.md) — every tool's purpose, why it was chosen, and its pricing tier
 
 ## Tech Stack at a Glance
 
 - Core automation platform: n8n Cloud
 - Language models
-- Embedding: Voyage AI (Anthropic's official recommended partner)
-- Vector database: TBD
 - Dynamic data: Supabase
-- Conversational front end: n8n Hosted Chat (built-in Chat Trigger node)
-- Human-in-the-loop: Slack
-- Tooling: Postman, Github, Git, Visual Studio Code
+- Conversational front end: n8n Chat Trigger (Hosted Chat in Unit 2 → Embedded Chat on a custom page in Unit 4)
+- Human-in-the-loop: Slack + Email
+- Tooling: Github, Git, Visual Studio Code
 
 See [tools.md](tools.md) for the reasoning behind each choice.
 
