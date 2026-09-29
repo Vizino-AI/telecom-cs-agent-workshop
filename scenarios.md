@@ -21,18 +21,15 @@ The most basic, most common telecom scenario — good for testing an agent's log
 
 ### Related SOP: Plan Change Request
 
-A natural extension once the upsell lands — the customer says "okay, switch me to that plan." Blazz's real billing system can't be changed by the bot directly, so the SOP routes it to a human instead of pretending to complete it.
+A natural extension once the upsell lands — the customer says "okay, switch me to that plan." Blazz's real billing system can't be changed by the bot, and working out eligibility or the right plan is a judgment call — so the agent doesn't attempt any of it, not even partially. It just recognizes the request and flags it for a human.
 
-**Why not let the agent execute it directly?** A plan change touches billing and contract terms — get it wrong (misheard plan, wrong customer, a bundled promo that silently voids) and it's a real financial mistake, not an undo-able chat message. This is exactly the class of "account-altering" decision [Unit 5](units/unit-5.md)'s guardrails lesson is about: it always routes to a human, no matter how confident the Model sounds. The once-per-day limit below is a *different*, narrower concern — it protects the human reviewer's queue from repeat/spam requests, it doesn't substitute for their review of whether a given change is correct.
+**Why not let the agent handle any part of it?** A plan change touches billing and contract terms — get it wrong (misheard plan, wrong customer, a bundled promo that silently voids) and it's a real financial mistake, not an undo-able chat message. This is exactly the class of "account-altering" decision [Unit 5](units/unit-5.md)'s guardrails lesson is about: it always routes to a human, no matter how confident the Model sounds — the agent doesn't get partial credit for checking eligibility correctly if it still can't be trusted to execute.
 
-1. **Verify identity** (reuse the Scenario 1 identity-verification Tool) — plan changes are account-altering, so this is non-negotiable even mid-conversation
-2. **Check eligibility**: query `customers.plan_last_changed_at` (see [mock-data.md](mock-data.md)) — a plan must be in place at least one day before it can change again. If less than 24 hours have passed, tell the customer when they'll be eligible and stop here; don't submit a new request
-3. **Understand the ask**: what's driving the change (recurring roaming charges, needs more data, wants to downgrade to save money) and confirm the customer's desired outcome
-4. **Recommend**: query the `plans` table for 1–2 plans that fit, and confirm which one the customer wants
-5. **Submit, don't execute**: send an email to Blazz's internal customer-service mailbox (e.g. `planchanges@blazz.internal`) with the customer's identity, current plan, requested plan, and the agent's reasoning — the same Email Tool pattern as Scenario 3's cancellation form
-6. **Set expectations**: tell the customer the request was submitted, when to expect confirmation, and when the new plan takes effect — never claim it's already done
+1. **Recognize the request**: as soon as the customer confirms they want to switch plans, stop there — no eligibility check, no plan recommendation, no deciding which plan fits
+2. **Set expectations**: tell the customer a human will follow up on the request; never imply it's already done
+3. **Flag it via email**: send an email to Blazz's internal customer-service mailbox (e.g. `planchanges@blazz.internal`) with the customer's identity and a plain-language summary of the request, headed with a clear **`ACTION REQUIRED`** marker so a human can't miss it and takes over from there — the same Email Tool pattern as Scenario 3's cancellation form, just a much simpler email: no recommended plan, no eligibility math, only the flagged summary
 
-This reuses the identity-verification and Email tools from elsewhere in the course — no new tool type, just a new system prompt wiring them together in sequence, plus one new column to check.
+This still reuses the Email Tool — the simplification is entirely in what the agent decides before sending it, not whether it sends anything.
 
 ## Scenario 2: Internet Outage Troubleshooting
 
@@ -48,11 +45,11 @@ Shows a Supabase Storage document lookup, a case the AI genuinely can't resolve 
 2. **Knowledge lookup**: a Tool call fetches the troubleshooting FAQ from Supabase Storage for the standard steps
 3. **Initial troubleshooting**: the FAQ's steps assume the customer *hasn't* already rebooted — David has, three times, so the agent has nothing left to try from the FAQ. This is the point of the scenario: the AI genuinely runs out of road, not a scripted "give up" step
 4. **Check technician availability**: rather than just escalating blind, the agent queries `technician_availability` for David's region (Toronto, ON) and offers 2–3 real slots: *"I found technicians available Tuesday 9–11am or Thursday 1–3pm — which works for you?"*
-5. **Customer picks a slot**: the agent creates a `dispatch_requests` row (`status: pending_approval`) with the customer, the chosen slot, and the issue description
-6. **Escalate with actionable buttons, not just a message**: n8n posts to `#blazz-cs-escalations` with the customer, region, issue, and proposed slot — plus two real Slack action buttons: **Confirm** and **Propose Other Time** (n8n's Slack "Send and Wait for Response" node supports custom button labels, mapping directly onto its native two-button approval pattern — no fallback needed here)
-7. **Human clicks a button** — two branches:
-   - **Confirm** → `dispatch_requests.status = approved`, the Slack message updates to show who approved it, and the AI tells David the technician is confirmed for that slot
-   - **Propose Other Time** → `status = rescheduling`; the AI goes back to David, tactfully explains that slot isn't available after all, and asks whether one of the remaining slots works instead (loop back to step 4)
+5. **Customer picks a slot**: no database write yet — the chosen slot's id, David's identity, and the issue description just ride along in the workflow's own execution data
+6. **Escalate with actionable buttons, not just a message**: n8n posts to `#blazz-cs-escalations` with the customer, region, issue, and proposed slot — plus two real Slack action buttons: **Confirm** and **Propose Other Time** (n8n's Slack "Send and Wait for Response" node supports custom button labels, mapping directly onto its native two-button approval pattern — no fallback needed here). This is a hard-coded branch, not a Model decision — the AI Agent isn't involved from here until it needs to relay the outcome
+7. **Human clicks a button** — two branches, each a plain `technician_availability` update, no separate tracking table needed:
+   - **Confirm** → `UPDATE technician_availability SET status = 'booked' WHERE id = <slot>`; n8n also sends David a confirmation email (technician, date, time) in parallel, in case he's no longer in the chat; the AI tells him in-chat too, if he still is
+   - **Propose Other Time** → `UPDATE technician_availability SET status = 'unavailable' WHERE id = <slot>` (it turned out this one can't actually be honored); the AI goes back to David, tactfully explains that, and asks whether one of the remaining slots works instead (loop back to step 4)
 
 **n8n highlight**: built end to end in [Unit 3](units/unit-3.md) — the interactive Slack buttons and the loop-back on "Propose Other Time" are what make this more than "post a message and wait."
 

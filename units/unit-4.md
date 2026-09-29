@@ -46,4 +46,4 @@ Write down 3–5 ambiguous or multi-intent customer messages that might confuse 
 
 ---
 
-[← Previous: Completing All Three Scenarios](unit-3.md) ｜ [Next: Hardening the Agent →](unit-5.md)
+[← Previous: Human-in-the-Loop & the Leap to Unstructured Data](unit-3.md) ｜ [Next: Hardening the Agent →](unit-5.md)

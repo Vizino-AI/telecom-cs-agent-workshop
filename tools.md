@@ -15,5 +15,5 @@
 | Relational database | Supabase | Managed Postgres; stores dynamic customer/billing data and chat memory — table built in Unit 2, queried by tools from Unit 2 onward |
 | Object storage | Supabase Storage | Holds Scenario 2's FAQ and Scenario 3's contract terms as files, fetched via a Tool call — built in Unit 3, same Supabase project as the database |
 | Team collaboration | Slack | Scenario 2's escalation tool (Unit 3), Blazz's internal human-in-the-loop review |
-| Email service | n8n Email/SMTP node | Scenario 3's cancellation-form tool (Unit 3), and the confidence-fallback transcript email (Unit 4) |
+| Email service | n8n Email/SMTP node | Scenario 1's Plan Change Request SOP and Scenario 3's cancellation-form tool (both Unit 3), and the confidence-fallback transcript email (Unit 4) |
 | Local prep environment | Docker | Self-hosted n8n for practicing Advanced AI (LangChain) nodes |

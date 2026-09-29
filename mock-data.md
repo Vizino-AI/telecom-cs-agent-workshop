@@ -2,7 +2,7 @@
 
 [← Back to course overview](README.md)
 
-Ready-to-run SQL for Blazz's Supabase database: schema for Scenario 1 (billing/plans/travel) and Scenario 2 (technician dispatch), plus seed data. Scenario 3's contract terms live as a document in Supabase Storage, not a table — see [Unit 3](units/unit-3.md).
+Ready-to-run SQL for Blazz's Supabase database: schema for Scenario 1 (billing/plans/travel) and Scenario 2 (technician scheduling), plus seed data. Scenario 3's contract terms live as a document in Supabase Storage, not a table — see [Unit 3](units/unit-3.md).
 
 This is prepared as a reference/fallback. The intent in [Unit 2](units/unit-2.md)/[Unit 3](units/unit-3.md) is still to have Claude write this SQL live with the student from the data design below — this file is what that exercise should land on, not a replacement for doing it live.
 
@@ -28,7 +28,7 @@ CREATE TABLE customers (
   service_region TEXT NOT NULL,        -- matches technicians.region
   contract_start_date DATE NOT NULL,
   contract_term_months INT NOT NULL DEFAULT 24,
-  plan_last_changed_at TIMESTAMP,      -- NULL = never changed since signup; see Scenario 1's Plan Change SOP
+  plan_last_changed_at TIMESTAMP,      -- NULL = never changed since signup; not checked by the agent (Scenario 1's Plan Change SOP just flags a human), kept for the human's reference
   created_at TIMESTAMP NOT NULL DEFAULT now()
 );
 
@@ -64,19 +64,8 @@ CREATE TABLE technician_availability (
   technician_id INT NOT NULL REFERENCES technicians(id),
   date DATE NOT NULL,
   time_slot TEXT NOT NULL,             -- e.g. '09:00-11:00'
-  status TEXT NOT NULL DEFAULT 'available'
+  status TEXT NOT NULL DEFAULT 'available'  -- available / booked / unavailable
 );
-
-CREATE TABLE dispatch_requests (
-  id SERIAL PRIMARY KEY,
-  customer_id INT NOT NULL REFERENCES customers(id),
-  technician_availability_id INT REFERENCES technician_availability(id),
-  issue_description TEXT,
-  status TEXT NOT NULL DEFAULT 'pending_approval',  -- pending_approval / approved / rescheduling
-  slack_message_ts TEXT,               -- so the bot can update the same Slack message after a button click
-  created_at TIMESTAMP NOT NULL DEFAULT now()
-);
--- dispatch_requests starts empty — rows get created live during the Scenario 2 demo, not seeded
 ```
 
 ## Seed Data
@@ -94,7 +83,7 @@ INSERT INTO plans (id, name, monthly_price, data_allowance_gb, roaming_included,
 
 ### `customers`
 
-10 customers across 5 Canadian cities — each region also has technician coverage (see below). Robert Nguyen's `plan_last_changed_at` is deliberately recent (within a day), as the demo case for the Plan Change SOP's eligibility check.
+10 customers across 5 Canadian cities — each region also has technician coverage (see below). Robert Nguyen's `plan_last_changed_at` is deliberately recent (within a day) — not used by any agent check, just there so the field isn't all `NULL` in the demo data.
 
 ```sql
 INSERT INTO customers (id, full_name, phone_number, account_pin, email, plan_id, service_region, contract_start_date, contract_term_months, plan_last_changed_at) VALUES

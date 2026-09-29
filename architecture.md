@@ -43,4 +43,4 @@ This is a narrower scope than a dedicated conversational-design platform would g
 The fictional carrier Blazz's internal support and engineering team receive escalations two ways, depending on which scenario triggered them:
 
 - **Slack** ([Unit 3](units/unit-3.md)): Scenario 2's troubleshooting agent posts to a designated channel (e.g. `#blazz-cs-escalations`) when a fix fails, with the conversation history and a "approve dispatch" button for a human supervisor
-- **Email** ([Unit 3](units/unit-3.md) for Scenario 3's cancellation form, [Unit 4](units/unit-4.md) for the confidence-based fallback): sends either the cancellation request form, or the customer's verified identity plus the full transcript when the front-desk workflow isn't confident enough to answer alone
+- **Email** ([Unit 3](units/unit-3.md) for Scenario 1's Plan Change Request SOP and Scenario 3's cancellation form, [Unit 4](units/unit-4.md) for the confidence-based fallback): sends the plan-change request, the cancellation request form, or the customer's verified identity plus the full transcript when the front-desk workflow isn't confident enough to answer alone
