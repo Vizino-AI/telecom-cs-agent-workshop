@@ -1,6 +1,6 @@
 # Blazz Telecom Customer Service AI Agent Workshop
 
-A five-unit, hands-on workshop: skip the theory behind generative AI and agentic AI, and go straight to building a multi-agent AI customer-service system for a realistic telecom scenario (fictional carrier **Blazz**) — so the student walks away with the satisfaction of having shipped something real.
+A six-unit, hands-on workshop: skip the theory behind generative AI and agentic AI, and go straight to building a multi-agent AI customer-service system for a realistic telecom scenario (fictional carrier **Blazz**) — so the student walks away with the satisfaction of having shipped something real.
 
 ## Goals & Framing
 
@@ -16,21 +16,23 @@ A five-unit, hands-on workshop: skip the theory behind generative AI and agentic
 
 ## Course Overview
 
-Five units, ~90 minutes each. Each unit's full detail (learning objectives, setup, background knowledge, timed class content, deliverables, homework) lives in its own file:
+Six units, ~90 minutes each. Each unit's full detail (learning objectives, setup, background knowledge, timed class content, deliverables, homework) lives in its own file:
 
 | Unit | Topic | Link |
 | --- | --- | --- |
 | Unit 1 | The Three Pillars of an Agent: Model (Brain), Context (Eyes), Tool (Hands & Feet) | [units/unit-1.md](units/unit-1.md) |
 | Unit 2 | Blazz's First Working Bot: Context, Memory & Tool Calling — Scenario 1, built hands-on in n8n | [units/unit-2.md](units/unit-2.md) |
-| Unit 3 | Human-in-the-Loop & the Leap to Unstructured Data: Finishing Scenario 1, Starting Scenario 2 | [units/unit-3.md](units/unit-3.md) |
-| Unit 4 | One Agent, Three Scenarios: Front-Desk Triage, Confidence Fallback & Embedded Chat | [units/unit-4.md](units/unit-4.md) |
-| Unit 5 | Hardening the Agent's Model, Context & Tool: Guardrails, Evaluation & Reliability | [units/unit-5.md](units/unit-5.md) |
+| Unit 3 | Completing All Three Scenarios: Tool Wiring & Human-in-the-Loop | [units/unit-3.md](units/unit-3.md) |
+| Unit 4 | Giving Blake a Knowledge Base: Vectors, Embeddings & RAG | [units/unit-4.md](units/unit-4.md) |
+| Unit 5 | One Agent, Three Scenarios: Front-Desk Triage, Confidence Fallback & Embedded Chat | [units/unit-5.md](units/unit-5.md) |
+| Unit 6 | Hardening the Agent's Model, Context & Tool: Guardrails, Evaluation & Reliability | [units/unit-6.md](units/unit-6.md) |
 
 ## Other Documents
 
 - [scenarios.md](scenarios.md) — three core customer-service scenarios used as reference for fake data and demos
 - [mock-data.md](mock-data.md) — ready-to-run SQL: schema and seed data (customers, plans, bills, travel history, technician scheduling)
 - [data-crash-course.md](data-crash-course.md) — quick explainer: relational databases, PostgreSQL, Supabase, and why unstructured data needs an LLM
+- [knowledge-base/](knowledge-base/README.md) — the 30-article Blazz knowledge base used for Unit 4's RAG build
 - [prompts.md](prompts.md) — draft AI Agent system prompts, one per scenario
 - [architecture.md](architecture.md) — service flow design, human-in-the-loop, and the web front-end design
 - [tools.md](tools.md) — every tool's purpose, why it was chosen, and its pricing tier
@@ -40,7 +42,7 @@ Five units, ~90 minutes each. Each unit's full detail (learning objectives, setu
 - Core automation platform: n8n Cloud
 - Language models
 - Dynamic data: Supabase
-- Conversational front end: n8n Chat Trigger (Hosted Chat in Unit 2 → Embedded Chat on a custom page in Unit 4)
+- Conversational front end: n8n Chat Trigger (Hosted Chat in Unit 2 → Embedded Chat on a custom page in Unit 5)
 - Human-in-the-loop: Slack + Email
 - Tooling: Github, Git, Visual Studio Code
 

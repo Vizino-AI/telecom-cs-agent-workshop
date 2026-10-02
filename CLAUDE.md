@@ -12,8 +12,9 @@ This is a reusable template — keep student references generic ("the student"),
 
 - Automation: **n8n Cloud** (no-code), account opened starting Unit 2
 - Language models: **Gemini Flash** + **Gemini Pro**
-- Conversational front end: **n8n Chat Trigger** — web only, Hosted Chat mode built in Unit 2, switched to Embedded Chat on a custom HTML page in Unit 4
-- Dynamic data: **Supabase** (managed Postgres), plus **Supabase Storage** for reference documents (Unit 3)
+- Conversational front end: **n8n Chat Trigger** — web only, Hosted Chat mode built in Unit 2, switched to Embedded Chat on a custom HTML page in Unit 5
+- Dynamic data: **Supabase** (managed Postgres), plus **Supabase Storage** for reference documents (Unit 3) and **Supabase Vector** (pgvector) for the RAG knowledge base (Unit 4)
+- Embeddings: **Gemini Embeddings API** (Unit 4)
 - Human-in-the-loop: **Slack** + **Email**
 - Dev assistance: Claude Code, kept to a no-code-friendly level
 

@@ -74,7 +74,7 @@ docker compose exec n8n rm /tmp/workflows.json /tmp/credentials.json
 
 Update the domain's DNS A record to the Hostinger VPS's IP (same Cloudflare "DNS only" / grey-cloud requirement as the GCP doc's Step 5 — a proxied record breaks Caddy's HTTPS cert request). Caddy on the new box will auto-request its own Let's Encrypt certificate once DNS resolves to it.
 
-If the student is moving to their **own domain** rather than reusing the instructor's, update `N8N_HOST`/`WEBHOOK_URL` in Hostinger's `docker-compose.yml` and the hostname in its `Caddyfile` to match (see the GCP doc's "Changing the domain later" section for the exact recreate steps) — and update any embedded-chat pages (e.g. the Unit 4 HTML page) that reference the old webhook URL.
+If the student is moving to their **own domain** rather than reusing the instructor's, update `N8N_HOST`/`WEBHOOK_URL` in Hostinger's `docker-compose.yml` and the hostname in its `Caddyfile` to match (see the GCP doc's "Changing the domain later" section for the exact recreate steps) — and update any embedded-chat pages (e.g. the Unit 5 HTML page) that reference the old webhook URL.
 
 ## 7. Verify, then decommission GCP
 

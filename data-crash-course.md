@@ -56,7 +56,7 @@ Most real-world data does **not** fit into neat rows and columns — a PDF, a Wo
 
 | File | Format | Used in |
 |---|---|---|
-| Troubleshooting FAQ | .pdf / .doc | Scenario 2 (Outage) |
+| Troubleshooting FAQ (device models, status-light meanings, steps) | multiple .pdf / .doc articles | Scenario 2 (Outage) |
 | Termination / cancellation terms | .pdf / .doc | Scenario 3 (Cancellation) |
 | Reference photos, if any | .jpg | — |
 
@@ -79,6 +79,7 @@ quadrantChart
     Travel history: [0.72, 0.7]
     Technician availability: [0.88, 0.6]
     Customer chat messages: [0.22, 0.8]
+    Device status description: [0.18, 0.72]
     Troubleshooting FAQ: [0.25, 0.3]
     Cancellation terms: [0.3, 0.15]
     Plans catalog: [0.75, 0.25]
@@ -89,7 +90,9 @@ quadrantChart
 |---|---|---|
 | **Structured + Dynamic** | `bills` (new row every month), `travel_histories`, `technician_availability` (booked/free changes per slot) | Supabase Database — queried live by Tools |
 | **Structured + Static** | `plans` (rate plan catalog), `technicians` roster (name/region rarely changes) | Supabase Database — lookup/reference tables |
-| **Unstructured + Dynamic** | The customer's live chat messages ("my wifi died an hour ago") | Never stored as a table — read straight by the LLM |
-| **Unstructured + Static** | Troubleshooting FAQ (Scenario 2), cancellation/contract terms (Scenario 3) | Supabase Storage — fetched by a Tool, read by the LLM |
+| **Unstructured + Dynamic** | The customer's live chat messages ("my wifi died an hour ago," "my light is orange") — including their own description of device status | Never stored as a table — read straight by the LLM |
+| **Unstructured + Static** | Troubleshooting FAQ (Scenario 2) — status-light meanings, per-device steps, escalation criteria; cancellation/contract terms (Scenario 3) | Supabase Storage — fetched by a Tool, read by the LLM |
 
 Notice the pattern: **the right side (structured) is what our database Tools query; the left side (unstructured) is only usable because we have an LLM to read it.** That's the one-sentence reason this course pairs Supabase with an LLM agent instead of just building a plain database app.
+
+**A common trap in Scenario 2**: "what color is this customer's status light right now" looks like it wants a `devices` table you can query. But the customer already says it in chat ("my light is orange") — that's Unstructured + Dynamic, read straight by the LLM, no table needed. What actually belongs in a document is the *meaning* — what orange means, what to do about it, when to escalate — which is Unstructured + Static, and that's what the RAG lookup is for. If you catch yourself building a table to hold something the customer already typed, that's usually a sign it belongs on the left side of this chart instead.

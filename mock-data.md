@@ -2,7 +2,7 @@
 
 [← Back to course overview](README.md)
 
-Ready-to-run SQL for Blazz's Supabase database: schema for Scenario 1 (billing/plans/travel) and Scenario 2 (technician scheduling), plus seed data. Scenario 3's contract terms live as a document in Supabase Storage, not a table — see [Unit 3](units/unit-3.md).
+Ready-to-run SQL for Blazz's Supabase database: schema for Scenario 1 (billing/plans/travel), Scenario 2 (technician scheduling), and Unit 4's RAG knowledge base, plus seed data. Scenario 3's contract terms live as a document in Supabase Storage, not a table — see [Unit 3](units/unit-3.md).
 
 This is prepared as a reference/fallback. The intent in [Unit 2](units/unit-2.md)/[Unit 3](units/unit-3.md) is still to have Claude write this SQL live with the student from the data design below — this file is what that exercise should land on, not a replacement for doing it live.
 
@@ -65,6 +65,20 @@ CREATE TABLE technician_availability (
   date DATE NOT NULL,
   time_slot TEXT NOT NULL,             -- e.g. '09:00-11:00'
   status TEXT NOT NULL DEFAULT 'available'  -- available / booked / unavailable
+);
+
+-- Unit 4: RAG knowledge base. No seed INSERTs here — rows are populated live in
+-- class by the RAG indexing workflow: the 30 articles in knowledge-base/articles/
+-- are uploaded to Supabase Storage, then each is embedded via the Gemini
+-- Embeddings API and stored here (one row per article = one chunk).
+CREATE EXTENSION IF NOT EXISTS vector;
+
+CREATE TABLE kb_chunks (
+  id SERIAL PRIMARY KEY,
+  article_slug TEXT NOT NULL UNIQUE,   -- e.g. 'kb-01-status-lights-explained'
+  title TEXT NOT NULL,
+  content TEXT NOT NULL,
+  embedding VECTOR(768)                -- dimension matches the Gemini embedding model used
 );
 ```
 

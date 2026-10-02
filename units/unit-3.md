@@ -52,4 +52,4 @@ Build Scenario 3 (Cancellation & Retention) on your own: duplicate the workflow,
 
 ---
 
-[← Previous: Blazz's First Working Bot](unit-2.md) ｜ [Next: One Agent, Three Scenarios →](unit-4.md)
+[← Previous: Blazz's First Working Bot](unit-2.md) ｜ [Next: Giving Blake a Knowledge Base →](unit-4.md)
