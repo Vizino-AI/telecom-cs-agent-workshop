@@ -2,7 +2,7 @@
 
 ## Background
 
-A one-on-one workshop: teach a student to build, from scratch, a multi-agent AI customer-service system for a realistic telecom scenario (fictional carrier **Blazz**).
+A one-on-one workshop: teach a student to build, from scratch, a single-agent AI customer-service system (one agent with many tools) for a realistic telecom scenario (fictional carrier **Blazz**).
 
 Read [`README.md`](./README.md) first. Each unit's timed class content, setup, background knowledge, deliverables, and homework live under [`units/`](./units/); architecture and flow diagrams are in [`architecture.md`](./architecture.md); the three core scenarios are in [`scenarios.md`](./scenarios.md); tool choices and reasoning are in [`tools.md`](./tools.md).
 
@@ -12,7 +12,7 @@ This is a reusable template — keep student references generic ("the student"),
 
 - Automation: **n8n Cloud** (no-code), account opened starting Unit 2
 - Language models: **Gemini Flash** + **Gemini Pro**
-- Conversational front end: **n8n Chat Trigger** — web only, Hosted Chat mode built in Unit 2, switched to Embedded Chat on a custom HTML page in Unit 5
+- Conversational front end: **n8n Chat Trigger** — web only, Hosted Chat mode, built in Unit 2 and used for the whole course
 - Dynamic data: **Supabase** (managed Postgres), plus **Supabase Storage** for reference documents (Unit 3) and **Supabase Vector** (pgvector) for the RAG knowledge base (Unit 4)
 - Embeddings: **Gemini Embeddings API** (Unit 4)
 - Human-in-the-loop: **Slack** + **Email**

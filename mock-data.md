@@ -2,7 +2,7 @@
 
 [← Back to course overview](README.md)
 
-Ready-to-run SQL for Blazz's Supabase database: schema for Scenario 1 (billing/plans/travel), Scenario 2 (technician scheduling), and Unit 4's RAG knowledge base, plus seed data. Scenario 3's contract terms live as a document in Supabase Storage, not a table — see [Unit 3](units/unit-3.md).
+Ready-to-run SQL for Blazz's Supabase database: schema for Scenario 1 (billing/plans/travel), Scenario 2 (technician scheduling), and the RAG knowledge base, plus seed data. Scenario 3's contract terms live as a document in Supabase Storage, not a table — see [Unit 3](units/unit-3.md).
 
 This is prepared as a reference/fallback. The intent in [Unit 2](units/unit-2.md)/[Unit 3](units/unit-3.md) is still to have Claude write this SQL live with the student from the data design below — this file is what that exercise should land on, not a replacement for doing it live.
 
@@ -67,19 +67,31 @@ CREATE TABLE technician_availability (
   status TEXT NOT NULL DEFAULT 'available'  -- available / booked / unavailable
 );
 
--- Unit 4: RAG knowledge base. No seed INSERTs here — rows are populated live in
--- class by the RAG indexing workflow: the 30 articles in knowledge-base/articles/
--- are uploaded to Supabase Storage, then each is embedded via the Gemini
--- Embeddings API and stored here (one row per article = one chunk).
+-- RAG knowledge base (walked through by the instructor in Unit 4, searched by the
+-- Front Desk Agent in Unit 5). No seed INSERTs here — the instructor's indexing
+-- workflow embeds each of the 30 articles in knowledge-base/articles/ via the Gemini
+-- Embeddings API and stores it here (one row per article, no chunking).
 CREATE EXTENSION IF NOT EXISTS vector;
 
-CREATE TABLE kb_chunks (
-  id SERIAL PRIMARY KEY,
-  article_slug TEXT NOT NULL UNIQUE,   -- e.g. 'kb-01-status-lights-explained'
-  title TEXT NOT NULL,
+CREATE TABLE kb_articles (
+  id BIGSERIAL PRIMARY KEY,
+  article_code TEXT,                   -- e.g. 'KB-03'
+  title TEXT,
+  category TEXT,
   content TEXT NOT NULL,
-  embedding VECTOR(768)                -- dimension matches the Gemini embedding model used
+  embedding VECTOR(3072)               -- dimension matches the Gemini embedding model used
 );
+
+-- Similarity search used by the RAG Search workflow (cosine distance, closest first)
+CREATE OR REPLACE FUNCTION match_kb_articles(query_embedding VECTOR, match_count INT DEFAULT 5)
+RETURNS TABLE (article_code TEXT, title TEXT, category TEXT, content TEXT, distance DOUBLE PRECISION)
+LANGUAGE sql STABLE AS $$
+  SELECT article_code, title, category, content,
+         embedding <=> query_embedding AS distance
+  FROM kb_articles
+  ORDER BY embedding <=> query_embedding
+  LIMIT match_count;
+$$;
 ```
 
 ## Seed Data

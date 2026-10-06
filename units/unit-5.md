@@ -1,4 +1,4 @@
-# Unit 5: One Agent, Three Scenarios — Front-Desk Triage & Confidence Fallback
+# Unit 5: Building the Blazz Front Desk Agent — MCP, Tools & Human-in-the-Loop
 
 [← Back to course overview](../README.md)
 
@@ -6,44 +6,56 @@
 
 By the end of this unit, the student can:
 
-- Combine several independently-built agents into one workflow behind a single front-desk triage agent
-- Design a triage agent that classifies an incoming request and hands off to the right specialist
-- Have the Model report a confidence score, and treat "not confident" as its own outcome instead of forcing a guess
-- Build a human fallback that emails a customer's verified identity and full conversation transcript to the call center
-- Swap n8n's Hosted Chat for Embedded Chat, and serve it from a simple custom HTML page instead of n8n's own hosted page
+- Explain what MCP (Model Context Protocol) is, and use Claude Code as an MCP client to work with n8n and Supabase
+- Build one front-desk agent, Blazz Front Desk Agent, that handles all three scenarios by giving it as many tools as it needs
+- Add three human-in-the-loop patterns: real-time approval, human follow-up, and an internal summary email
+- Use Claude Code to read the Supabase data and design three end-to-end "ultimate test" scenarios, run them, and judge the result
+- Discuss what makes a good AI customer service agent
 
 ## Setup
 
-No new accounts — reuses everything from Units 2–4 (n8n, Supabase, LLM key, Slack, Email).
+- Download and install [Claude Code](https://claude.com/claude-code) (the MCP client)
+- Connect the n8n MCP server and the Supabase MCP server to Claude Code through Connectors
+- The instructor shares the URL and API key for the hosted RAG Search endpoint, so the student's agent can search the Blazz knowledge base without building RAG on their own n8n
+- Everything else is reused from Units 2–4 (n8n, Supabase, Gemini key, Gmail/Slack)
 
 ## Nice to Know
 
-- **Multi-agent orchestration**: a front-desk/triage agent that classifies intent and hands off, versus sub-agents that do the specialized work
-- **Confidence scoring**: asking the Model to report how sure it is, so "unsure" becomes a real branch in the workflow rather than a guess
-- **Escalation via email**: an internal-facing email carrying identity + full transcript is a simple, reliable way to hand a live conversation to a human
-- **Embedded Chat vs. Hosted Chat**: Hosted Chat serves n8n's own ready-made page; Embedded mode instead gives a small JS snippet to drop into your own HTML page
-- **Just enough HTML**: a script tag and a bit of styling is all it takes to put the embedded chat on a page that looks like Blazz's, not n8n's
+- **MCP (Model Context Protocol)**: a standard way for an AI app to connect to outside tools and data, so any MCP client can use any MCP server
+- **MCP client vs. MCP server**: Claude Code is the client; n8n and Supabase each expose a server that the client talks to
+- **One agent, many tools**: instead of one agent per scenario, a single agent with a well-described tool for each job. The tool descriptions are what the Model reads to decide which one to call
+- **Real-time approval**: the workflow pauses at a high-risk step and waits for a human to approve or decline before the agent can promise anything
+- **Human follow-up**: the agent pauses, asks a human for the answer it does not have, and relays only what the human actually wrote
+- **Summary email**: an internal-only record of each finished conversation
 
 ## Class Content
 
-- Review from last session, Q&A (10 mins)
-- Design and build the front-desk triage agent: classify the incoming message as Scenario 1 (billing), 2 (outage), 3 (cancellation), or unclear, and wire in the three scenario agents from Units 2–3 as its handoff targets inside one combined workflow (30 mins)
-- Add a confidence score to each sub-agent's response; below a threshold, route to the fallback instead of replying directly (15 mins)
-- Build the fallback: an Email Tool that sends the customer's verified identity and the full conversation transcript to the call center, then tells the customer a human will follow up (15 mins)
-- Switch the front end from Hosted Chat to Embedded Chat: grab n8n's embed snippet and drop it into a simple custom HTML page with minimal Blazz branding (15 mins)
-- Test all three scenarios plus an ambiguous, low-confidence case through the new embedded page; wrap-up (5 mins)
+- Review from last session, Q&A (5 mins)
+- Install the n8n MCP server (20 mins)
+  - Download Claude Code (the MCP client)
+  - Use Connectors to connect the n8n and Supabase MCP servers
+- Build the Blazz Front Desk Agent: add as many tools as needed, including RAG Search, called over the instructor's hosted endpoint with an HTTP Request tool (15 mins)
+- Add human-in-the-loop (25 mins)
+  - Real-time approval
+  - Follow-up
+  - Summary
+- Three ultimate test scenarios (15 mins): ask Claude Code to read the data in Supabase through the Supabase MCP server and come up with three ultimate test scenarios for the agent, then run them against the Front Desk Agent
+- Open discussion: what makes a good AI customer service agent? (10 mins)
 
 ## Deliverables
 
-A single n8n workflow, served through a simple custom HTML page (not n8n's own hosted page), that:
+A single Blazz Front Desk Agent workflow in n8n that:
 
-- Routes each incoming conversation to the right scenario agent via a front-desk triage agent
-- Falls back to a human whenever confidence is low, by emailing the customer's identity and full transcript to the call center
+- Handles all three scenarios through one set of tools
+- Asks a human for real-time approval before any high-risk commitment
+- Asks a human for follow-up when it cannot answer, and relays the reply faithfully
+- Sends an internal summary email when a conversation ends
+- Has been run through three ultimate test scenarios that Claude Code designed from the Supabase data
 
 ## Homework
 
-Write down 3–5 ambiguous or multi-intent customer messages that might confuse the triage agent (e.g. one that reads as both a billing question and a complaint). Bring them to test in Unit 6's stress test.
+How would you evaluate the performance of a customer service chatbot? Write down your answer.
 
 ---
 
-[← Previous: Giving Blake a Knowledge Base](unit-4.md) ｜ [Next: Hardening the Agent →](unit-6.md)
+[← Previous: Giving Blake a Knowledge Base](unit-4.md) ｜ [Back to course overview](../README.md)

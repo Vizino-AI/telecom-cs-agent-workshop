@@ -2,7 +2,7 @@
 
 [← Back to course overview](README.md)
 
-These three scenarios stay close to real telecom business needs and together cover tool calling, static-knowledge lookups, and human-in-the-loop — a great script to build the multi-agent implementation around. Prefer these three scenarios when designing fake data, test cases, or demos; [Unit 1](units/unit-1.md)'s homework can point the student toward these three directions when designing Blazz's fake data.
+These three scenarios stay close to real telecom business needs and together cover tool calling, static-knowledge lookups, and human-in-the-loop — a great script to build the agent around. Prefer these three scenarios when designing fake data, test cases, or demos; [Unit 1](units/unit-1.md)'s homework can point the student toward these three directions when designing Blazz's fake data.
 
 ## Scenario 1: Billing Inquiry & Plan Upsell
 
@@ -12,7 +12,7 @@ The most basic, most common telecom scenario — good for testing an agent's log
 
 **Flow**:
 
-1. Intent classification: the router agent classifies this as a billing question and hands off to the "billing support agent"
+1. Intent classification: the agent recognizes this as a billing question and decides to use its billing tools
 2. Call a tool (API): trigger an API call to look up this customer's billing detail for the month (the fake billing table built in [Unit 2](units/unit-2.md) in Supabase)
 3. Analyze & respond: discover the customer used roaming data abroad, and explain the source of the charge
 4. Upsell: based on the customer's frequent-travel pattern, proactively recommend the "$500/month global roaming unlimited" plan
@@ -23,7 +23,7 @@ The most basic, most common telecom scenario — good for testing an agent's log
 
 A natural extension once the upsell lands — the customer says "okay, switch me to that plan." Blazz's real billing system can't be changed by the bot, and working out eligibility or the right plan is a judgment call — so the agent doesn't attempt any of it, not even partially. It just recognizes the request and flags it for a human.
 
-**Why not let the agent handle any part of it?** A plan change touches billing and contract terms — get it wrong (misheard plan, wrong customer, a bundled promo that silently voids) and it's a real financial mistake, not an undo-able chat message. This is exactly the class of "account-altering" decision [Unit 6](units/unit-6.md)'s guardrails lesson is about: it always routes to a human, no matter how confident the Model sounds — the agent doesn't get partial credit for checking eligibility correctly if it still can't be trusted to execute.
+**Why not let the agent handle any part of it?** A plan change touches billing and contract terms — get it wrong (misheard plan, wrong customer, a bundled promo that silently voids) and it's a real financial mistake, not an undo-able chat message. This is exactly the class of "account-altering" decision that [Unit 5](units/unit-5.md)'s real-time approval pattern is for: it always routes to a human, no matter how confident the Model sounds — the agent doesn't get partial credit for checking eligibility correctly if it still can't be trusted to execute.
 
 1. **Recognize the request**: as soon as the customer confirms they want to switch plans, stop there — no eligibility check, no plan recommendation, no deciding which plan fits
 2. **Set expectations**: tell the customer a human will follow up on the request; never imply it's already done
@@ -33,7 +33,7 @@ This still reuses the Email Tool — the simplification is entirely in what the 
 
 ## Scenario 2: Internet Outage Troubleshooting
 
-Shows a knowledge-base lookup (a single Supabase Storage document at first, upgraded to a full RAG search in [Unit 4](units/unit-4.md)), a case the AI genuinely can't resolve alone, and human-in-the-loop with real interactive Slack buttons — not just a notification.
+Shows a knowledge-base lookup (a single Supabase Storage document in [Unit 3](units/unit-3.md), explained as RAG in [Unit 4](units/unit-4.md) and searched through the hosted RAG Search endpoint in [Unit 5](units/unit-5.md)), a case the AI genuinely can't resolve alone, and human-in-the-loop with real interactive Slack buttons — not just a notification.
 
 **Customer**: David Kim (see [mock-data.md](mock-data.md) — Toronto, ON, matches technicians Priya Sharma and Marco Ricci's availability)
 
@@ -41,8 +41,8 @@ Shows a knowledge-base lookup (a single Supabase Storage document at first, upgr
 
 **Flow**:
 
-1. **Intent classification**: the router agent classifies this as a technical issue and hands off to the technical-support agent
-2. **Knowledge lookup**: a Tool call searches the troubleshooting knowledge base for the standard steps — a single Supabase Storage document in [Unit 3](units/unit-3.md), upgraded to a RAG search over the 30-article knowledge base in [Unit 4](units/unit-4.md)
+1. **Intent classification**: the agent recognizes this as a technical issue and decides to use its troubleshooting tools
+2. **Knowledge lookup**: a Tool call searches the troubleshooting knowledge base for the standard steps — a single Supabase Storage document in [Unit 3](units/unit-3.md), then a RAG search over the 30-article knowledge base (concepts in [Unit 4](units/unit-4.md), the hosted RAG Search tool in [Unit 5](units/unit-5.md))
 3. **Initial troubleshooting**: the FAQ's steps assume the customer *hasn't* already rebooted — David has, three times, so the agent has nothing left to try from the FAQ. This is the point of the scenario: the AI genuinely runs out of road, not a scripted "give up" step
 4. **Check technician availability**: rather than just escalating blind, the agent queries `technician_availability` for David's region (Toronto, ON) and offers 2–3 real slots: *"I found technicians available Tuesday 9–11am or Thursday 1–3pm — which works for you?"*
 5. **Customer picks a slot**: no database write yet — the chosen slot's id, David's identity, and the issue description just ride along in the workflow's own execution data
@@ -51,11 +51,11 @@ Shows a knowledge-base lookup (a single Supabase Storage document at first, upgr
    - **Confirm** → `UPDATE technician_availability SET status = 'booked' WHERE id = <slot>`; n8n also sends David a confirmation email (technician, date, time) in parallel, in case he's no longer in the chat; the AI tells him in-chat too, if he still is
    - **Propose Other Time** → `UPDATE technician_availability SET status = 'unavailable' WHERE id = <slot>` (it turned out this one can't actually be honored); the AI goes back to David, tactfully explains that, and asks whether one of the remaining slots works instead (loop back to step 4)
 
-**n8n highlight**: built end to end in [Unit 3](units/unit-3.md) — the interactive Slack buttons and the loop-back on "Propose Other Time" are what make this more than "post a message and wait." The knowledge lookup itself is upgraded to RAG in [Unit 4](units/unit-4.md).
+**n8n highlight**: built end to end in [Unit 3](units/unit-3.md) — the interactive Slack buttons and the loop-back on "Propose Other Time" are what make this more than "post a message and wait." The knowledge lookup itself becomes a RAG search in [Unit 5](units/unit-5.md), via the instructor's hosted endpoint (concepts in [Unit 4](units/unit-4.md)).
 
 ## Scenario 3: Cancellation & Retention
 
-A more advanced scenario that tests the AI's emotional awareness and negotiation skills — good for [Unit 6](units/unit-6.md)'s hardening/difficult-customer stress test.
+A more advanced scenario that tests the AI's emotional awareness and negotiation skills — good for [Unit 5](units/unit-5.md)'s ultimate test scenarios.
 
 **Customer message**: "Your signal is terrible! I want to file a complaint! I want to cancel and get a refund — send me the form right now!"
 
@@ -79,7 +79,7 @@ Sometimes de-escalation itself is the wrong move — a customer who's truly furi
    - a short AI-generated **summary** of the conversation, so the human isn't stuck reading a long heated back-and-forth cold before they can respond
 3. **Tell the customer**: confirm a human has been looped in and roughly when to expect a reply — don't keep negotiating in the meantime
 
-This is the same escalation pattern as [Unit 5](units/unit-5.md)'s confidence-based fallback (identity + transcript to the call center), just triggered by an explicit request instead of a low confidence score, with a summary added on top. Worth formalizing as a general rule in Unit 5's triage layer, not just a Scenario 3 special case — an explicit "get me a human" should short-circuit any scenario, not only cancellation.
+This is the same escalation pattern as the Human Follow-up tool in [Unit 5](units/unit-5.md) (identity + conversation summary emailed to a human), just triggered by an explicit request, with a summary added on top. Worth making a general rule in the Front Desk Agent's system prompt, not just a Scenario 3 special case — an explicit "get me a human" should short-circuit any scenario, not only cancellation.
 
 ---
 
